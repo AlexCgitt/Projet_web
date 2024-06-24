@@ -1,0 +1,111 @@
+body {
+    font-family: 'Noto Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+nav .logo img {
+    width: 50px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5em;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+nav .login a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+main {
+    text-align: center;
+    padding: 2em;
+}
+
+main h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+main p {
+    color: #818181;
+    margin-bottom: 2em;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5em;
+    padding: 1em;
+}
+
+.grid-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: left;
+    padding: 1em;
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 1em;
+}
+
+.grid-item h2 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.grid-item p {
+    color: #555;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em;
+    background-color: #f9f9f9;
+    margin-top: 2em;
+}
+
+footer .contact-info {
+    text-align: left;
+}
+
+footer .contact-info p {
+    margin: 0.5em 0;
+}
+
+footer .map img {
+    width: 150px;
+    height: auto;
+}
