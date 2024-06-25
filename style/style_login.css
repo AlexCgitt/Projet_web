@@ -9,12 +9,12 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 1em 2em;
-    background-color: #fff;
+    background-color: #f7f7f7;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 nav .logo img {
-    width: 50px;
+    width: 120px;
 }
 
 nav ul {
@@ -64,6 +64,7 @@ main p {
 }
 
 .login-form label {
+    margin-left: 2%;
     display: block;
     margin-bottom: 0.5em;
     font-weight: bold;
@@ -74,36 +75,37 @@ main p {
     padding: 0.5em;
     margin-bottom: 1em;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 12px;
 }
 
 .login-form button {
+    margin-top: 3%;
     width: 100%;
     padding: 0.75em;
     background-color: black;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 12px;
     font-weight: bold;
     cursor: pointer;
 }
 
 footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2em;
+    margin-top: 2%;
     background-color: #f9f9f9;
-    margin-top: 2em;
+    padding: 25px 100px;
 }
 
-footer .contact-info {
-    text-align: left;
+footer .centre{
+    text-align: center;
+
 }
 
-footer .contact-info p {
-    margin: 0.5em 0;
-}
+footer .colonnes{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 
 footer .social-icons {
     display: flex;
@@ -115,7 +117,29 @@ footer .social-icons a img {
     height: 24px;
 }
 
-footer .map {
-    width: 400px;
-    height: 300px;
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0.5em;
+        width: 100%;
+    }
+
+    nav .logo img {
+        width: 100px;
+    }
+
+    nav .login {
+        width: 100%;
+        text-align: right;
+    }
+
+    main .title-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

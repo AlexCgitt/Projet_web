@@ -11,7 +11,9 @@
 <body>
     <nav>
         <div class="logo">
-            <img src="image/logo.png" alt="logo">
+            <a href="index.html">
+                <img src="../img/logo.png" alt="logo">
+            </a>
         </div>
         <ul>
             <li><a href="#">Ajout d'arbres</a></li>
@@ -20,7 +22,7 @@
             <li><a href="#">Contact</a></li>
         </ul>
         <div class="login">
-            <a href="#">log in / log out</a>
+            <a href="./login.html">log in / log out</a>
         </div>
     </nav>
     
@@ -28,7 +30,7 @@
         <h1>Connexion</h1>
         <p>Connectez-vous à votre compte afin de pouvoir ajouter des arbres</p>
         <form class="login-form">
-            <label for="username">pseudo</label>
+            <label for="username">Pseudo</label>
             <input type="text" id="username" name="username" value="user12mickael">
             
             <label for="password">Mot de passe</label>
@@ -39,32 +41,24 @@
     </main>
 
     <footer>
-        <div class="contact-info">
-            <p>Contact</p>
-            <div class="social-icons">
-                <a href="#"><img src="image/facebook.png" alt="Facebook"></a>
-                <a href="#"><img src="image/linkedin.png" alt="LinkedIn"></a>
-                <a href="#"><img src="image/youtube.png" alt="YouTube"></a>
-                <a href="#"><img src="image/instagram.png" alt="Instagram"></a>
+        <p class="centre">SAINT-QUENTREE</p>
+        <div class="colonnes">
+            <div class="colonne">
+                <p class="centre">Contact</p>
+                <div class="social-icons">
+                    <a href="#"><img src="image/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="image/linkedin.png" alt="LinkedIn"></a>
+                    <a href="#"><img src="image/youtube.png" alt="YouTube"></a>
+                    <a href="#"><img src="image/instagram.png" alt="Instagram"></a>
+                </div>
             </div>
-            <p>&copy; Saint Quentree</p>
+            <div class="colonne">
+                <p>Adresse</p>
+                <p>1 rue des arbres</p>
+                <p>02100 Saint-Quentin</p>
         </div>
-        <div class="map" id="map"></div>
+
     </footer>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
-    <script>
-        function initMap() {
-            var saintQuentin = {lat: 49.8489, lng: 3.2876};
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 12,
-                center: saintQuentin
-            });
-            var marker = new google.maps.Marker({
-                position: saintQuentin,
-                map: map
-            });
-        }
-    </script>
 </body>
 </html>
