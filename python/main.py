@@ -60,6 +60,9 @@ if connection.is_connected():
         quartier = data[data['clc_secteur'] == secteur]['clc_quartier'].unique()
         secteur_quartier[secteur] = quartier
 
+
+    #trouver l'id du quartier
+
     for value in secteurs:
         cursor.execute(query7, (value,))
     for value in situation:
