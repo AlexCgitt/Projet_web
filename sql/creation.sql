@@ -26,13 +26,13 @@ CREATE TABLE Stadedev(
 
 
 #------------------------------------------------------------
-# Table: Nomtech
+# Table: NomTech
 #------------------------------------------------------------
 
-CREATE TABLE Nomtech(
+CREATE TABLE NomTech(
         id_nomtech Int  Auto_increment  NOT NULL ,
         nomtech    Varchar (50) NOT NULL
-	,CONSTRAINT Nomtech_PK PRIMARY KEY (id_nomtech)
+	,CONSTRAINT NomTech_PK PRIMARY KEY (id_nomtech)
 )ENGINE=InnoDB;
 
 
@@ -119,7 +119,7 @@ CREATE TABLE Quartier(
 
 CREATE TABLE Secteur(
         id_secteur  Int  Auto_increment  NOT NULL ,
-        nom_secteur Varchar (50) NOT NULL ,
+        nom_secteur Varchar (70) NOT NULL ,
         id_quartier Int NOT NULL
 	,CONSTRAINT Secteur_PK PRIMARY KEY (id_secteur)
 
@@ -138,11 +138,9 @@ CREATE TABLE Arbre(
         haut_tot     Float NOT NULL ,
         haut_tronc   Float NOT NULL ,
         tronc_diam   Float NOT NULL ,
-        age_estim    Int NOT NULL ,
         clc_nbr_diag Int NOT NULL ,
-        remarquable  Bool NOT NULL ,
-        revetement   Bool NOT NULL ,
-        date_ajout   Datetime NOT NULL ,
+        remarquable  Varchar (5) NOT NULL ,
+        revetement   Varchar (5) NOT NULL ,
         id_stadedev  Int NOT NULL ,
         identifiant  Varchar (50) NOT NULL ,
         id_nomtech   Int NOT NULL ,
@@ -152,12 +150,13 @@ CREATE TABLE Arbre(
         id_feuillage Int NOT NULL ,
         id_situation Int NOT NULL ,
         id_arbreetat Int NOT NULL ,
-        id_secteur   Int NOT NULL
+        id_secteur   Int NOT NULL ,
+        id_quartier  Int NOT NULL
 	,CONSTRAINT Arbre_PK PRIMARY KEY (id_arbre)
 
 	,CONSTRAINT Arbre_Stadedev_FK FOREIGN KEY (id_stadedev) REFERENCES Stadedev(id_stadedev)
 	,CONSTRAINT Arbre_Utilisateur0_FK FOREIGN KEY (identifiant) REFERENCES Utilisateur(identifiant)
-	,CONSTRAINT Arbre_Nomtech1_FK FOREIGN KEY (id_nomtech) REFERENCES Nomtech(id_nomtech)
+	,CONSTRAINT Arbre_NomTech1_FK FOREIGN KEY (id_nomtech) REFERENCES NomTech(id_nomtech)
 	,CONSTRAINT Arbre_Port2_FK FOREIGN KEY (id_port) REFERENCES Port(id_port)
 	,CONSTRAINT Arbre_Villeca3_FK FOREIGN KEY (id_villeca) REFERENCES Villeca(id_villeca)
 	,CONSTRAINT Arbre_Pied4_FK FOREIGN KEY (id_pied) REFERENCES Pied(id_pied)
@@ -165,4 +164,6 @@ CREATE TABLE Arbre(
 	,CONSTRAINT Arbre_Situation6_FK FOREIGN KEY (id_situation) REFERENCES Situation(id_situation)
 	,CONSTRAINT Arbre_ArbreEtat7_FK FOREIGN KEY (id_arbreetat) REFERENCES ArbreEtat(id_arbreetat)
 	,CONSTRAINT Arbre_Secteur8_FK FOREIGN KEY (id_secteur) REFERENCES Secteur(id_secteur)
+	,CONSTRAINT Arbre_Quartier9_FK FOREIGN KEY (id_quartier) REFERENCES Quartier(id_quartier)
 )ENGINE=InnoDB;
+
