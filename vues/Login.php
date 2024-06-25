@@ -11,7 +11,7 @@
 <body>
     <nav>
         <div class="logo">
-            <a href="index.html">
+            <a href="./Acceuil.php">
                 <img src="../img/logo.png" alt="logo">
             </a>
         </div>
@@ -22,7 +22,7 @@
             <li><a href="#">Contact</a></li>
         </ul>
         <div class="login">
-            <a href="./login.html">log in / log out</a>
+            <a href="./Login.php">log in / log out</a>
         </div>
     </nav>
     
@@ -36,7 +36,7 @@
             <label for="password">Mot de passe</label>
             <input type="password" id="password" name="password" value="password">
             
-            <button type="submit">Submit</button>
+            <button type="submit">Valider</button>
         </form>
     </main>
 

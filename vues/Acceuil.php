@@ -22,7 +22,7 @@
             <li><a href="#">Contact</a></li>
         </ul>
         <div class="login">
-            <a href="./login.php">log in / log out</a>
+            <a href="./Login.php">log in / log out</a>
         </div>
     </nav>
     
