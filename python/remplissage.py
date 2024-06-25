@@ -4,6 +4,8 @@ data = pd.read_csv('csv/Data_Arbre.csv')
 
 print(data.columns)
 
+
+
 #Récupère toutes les valeurs possibles pour les colonnes clc_quartier, clc_secteur, fk_arb_etat, fk_stadedev, fk_port, fk_pied, fk_situation, fk_revetement, fk_nomtech, villeca, feuillage
 quartier = data['clc_quartier'].unique()
 secteur = data['clc_secteur'].unique()

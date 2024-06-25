@@ -8,8 +8,8 @@
 #------------------------------------------------------------
 
 CREATE TABLE Utilisateur(
-        identifiant Varchar (20) NOT NULL ,
-        mdp         Varchar (20) NOT NULL
+        identifiant Varchar (50) NOT NULL ,
+        mdp         Varchar (50) NOT NULL
 	,CONSTRAINT Utilisateur_PK PRIMARY KEY (identifiant)
 )ENGINE=InnoDB;
 
@@ -20,7 +20,7 @@ CREATE TABLE Utilisateur(
 
 CREATE TABLE Stadedev(
         id_stadedev  Int  Auto_increment  NOT NULL ,
-        nom_stadedev Varchar (20) NOT NULL
+        nom_stadedev Varchar (50) NOT NULL
 	,CONSTRAINT Stadedev_PK PRIMARY KEY (id_stadedev)
 )ENGINE=InnoDB;
 
@@ -31,7 +31,7 @@ CREATE TABLE Stadedev(
 
 CREATE TABLE Nomtech(
         id_nomtech Int  Auto_increment  NOT NULL ,
-        nomtech    Varchar (20) NOT NULL
+        nomtech    Varchar (50) NOT NULL
 	,CONSTRAINT Nomtech_PK PRIMARY KEY (id_nomtech)
 )ENGINE=InnoDB;
 
@@ -42,7 +42,7 @@ CREATE TABLE Nomtech(
 
 CREATE TABLE Port(
         id_port  Int  Auto_increment  NOT NULL ,
-        nom_port Varchar (20) NOT NULL
+        nom_port Varchar (50) NOT NULL
 	,CONSTRAINT Port_PK PRIMARY KEY (id_port)
 )ENGINE=InnoDB;
 
@@ -53,7 +53,7 @@ CREATE TABLE Port(
 
 CREATE TABLE Villeca(
         id_villeca  Int  Auto_increment  NOT NULL ,
-        nom_villeca Varchar (20) NOT NULL
+        nom_villeca Varchar (50) NOT NULL
 	,CONSTRAINT Villeca_PK PRIMARY KEY (id_villeca)
 )ENGINE=InnoDB;
 
@@ -64,7 +64,7 @@ CREATE TABLE Villeca(
 
 CREATE TABLE Pied(
         id_pied  Int  Auto_increment  NOT NULL ,
-        nom_pied Varchar (20) NOT NULL
+        nom_pied Varchar (50) NOT NULL
 	,CONSTRAINT Pied_PK PRIMARY KEY (id_pied)
 )ENGINE=InnoDB;
 
@@ -75,7 +75,7 @@ CREATE TABLE Pied(
 
 CREATE TABLE Feuillage(
         id_feuillage  Int  Auto_increment  NOT NULL ,
-        nom_feuillage Varchar (20) NOT NULL
+        nom_feuillage Varchar (50) NOT NULL
 	,CONSTRAINT Feuillage_PK PRIMARY KEY (id_feuillage)
 )ENGINE=InnoDB;
 
@@ -86,7 +86,7 @@ CREATE TABLE Feuillage(
 
 CREATE TABLE Situation(
         id_situation  Int  Auto_increment  NOT NULL ,
-        nom_situation Varchar (20) NOT NULL
+        nom_situation Varchar (50) NOT NULL
 	,CONSTRAINT Situation_PK PRIMARY KEY (id_situation)
 )ENGINE=InnoDB;
 
@@ -97,7 +97,7 @@ CREATE TABLE Situation(
 
 CREATE TABLE ArbreEtat(
         id_arbreetat  Int  Auto_increment  NOT NULL ,
-        nom_arbreetat Varchar (20) NOT NULL
+        nom_arbreetat Varchar (50) NOT NULL
 	,CONSTRAINT ArbreEtat_PK PRIMARY KEY (id_arbreetat)
 )ENGINE=InnoDB;
 
@@ -108,7 +108,7 @@ CREATE TABLE ArbreEtat(
 
 CREATE TABLE Quartier(
         id_quartier  Int  Auto_increment  NOT NULL ,
-        nom_quartier Varchar (20) NOT NULL
+        nom_quartier Varchar (50) NOT NULL
 	,CONSTRAINT Quartier_PK PRIMARY KEY (id_quartier)
 )ENGINE=InnoDB;
 
@@ -119,7 +119,7 @@ CREATE TABLE Quartier(
 
 CREATE TABLE Secteur(
         id_secteur  Int  Auto_increment  NOT NULL ,
-        nom_secteur Varchar (20) NOT NULL ,
+        nom_secteur Varchar (50) NOT NULL ,
         id_quartier Int NOT NULL
 	,CONSTRAINT Secteur_PK PRIMARY KEY (id_secteur)
 
@@ -144,7 +144,7 @@ CREATE TABLE Arbre(
         revetement   Bool NOT NULL ,
         date_ajout   Datetime NOT NULL ,
         id_stadedev  Int NOT NULL ,
-        identifiant  Varchar (20) NOT NULL ,
+        identifiant  Varchar (50) NOT NULL ,
         id_nomtech   Int NOT NULL ,
         id_port      Int NOT NULL ,
         id_villeca   Int NOT NULL ,
@@ -166,4 +166,3 @@ CREATE TABLE Arbre(
 	,CONSTRAINT Arbre_ArbreEtat7_FK FOREIGN KEY (id_arbreetat) REFERENCES ArbreEtat(id_arbreetat)
 	,CONSTRAINT Arbre_Secteur8_FK FOREIGN KEY (id_secteur) REFERENCES Secteur(id_secteur)
 )ENGINE=InnoDB;
-

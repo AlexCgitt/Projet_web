@@ -1,3 +1,4 @@
+<?php
 class Utilisateur   //Classe qui gere l'ajout et le changement d'informations de l'utilisateur (ses informations)
 {
     /**Permet à l'utilisateur de se connecter
@@ -45,3 +46,5 @@ class Utilisateur   //Classe qui gere l'ajout et le changement d'informations de
         return false;
     }
 }
+
+?>
