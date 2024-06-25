@@ -6,17 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="../style/style_acceuil.css">
-    <link rel="stylesheet" href="../style/style_header.css">
     <title>SAINT-QUENTREE</title>
 </head>
 <body>
     <nav>
         <div class="logo">
-            <img src="../img/logo.png" alt="logo">
+            <a href="./Acceuil.php">
+                <img src="../img/logo.png" alt="logo">
+            </a>
         </div>
         <ul>
             <li><a href="#">Ajout d'arbres</a></li>
-            <li><a href="#">Visualisation</a></li>
+            <li><a href="./visualisation.php">Visualisation</a></li>
             <li><a href="#">Prediction</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
@@ -26,8 +27,13 @@
     </nav>
     
     <main>
-        <h1>SAINT-QUENTREE</h1>
-        <p>Description du site</p>
+        <div class="title-section">
+            <div>
+                <h1>SAINT-QUENTREE</h1>
+                <p>Description du site</p>
+            </div>
+            <img src="../img/saint_quentree.png">
+        </div>
         <section class="grid-container">
             <div class="grid-item">
                 <img src="../img/ajout.jpg" alt="Ajout d'arbres">
@@ -53,10 +59,22 @@
     </main>
 
     <footer>
-        <div class="contact-info">
-            <p>Contact</p>
-            <p>&copy; Saint Quentree</p>
+        <p class="centre">SAINT-QUENTREE</p>
+        <div class="colonnes">
+            <div class="colonne">
+                <p>Contact</p>
+                <p>instagram</p>
+                <p>facebook</p>
+                <p>twitter</p>
+            </div>
+            <div class="colonne">
+                <p>Adresse</p>
+                <p>1 rue des arbres</p>
+                <p>02100 Saint-Quentin</p>
+
         </div>
+
     </footer>
+    
 </body>
 </html>
