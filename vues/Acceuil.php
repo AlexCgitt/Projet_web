@@ -16,10 +16,10 @@
             </a>
         </div>
         <ul>
-            <li><a href="#">Ajout d'arbres</a></li>
+            <li><a href="./Ajout.php">Ajout d'arbres</a></li>
             <li><a href="./visualisation.php">Visualisation</a></li>
-            <li><a href="#">Prediction</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="./prediction.php">Prediction</a></li>
+            <li><a href="./contact.php">Contact</a></li>
         </ul>
         <div class="login">
             <a href="./Login.php">log in / log out</a>
@@ -36,22 +36,32 @@
         </div>
         <section class="grid-container">
             <div class="grid-item">
-                <img src="../img/ajout.jpg" alt="Ajout d'arbres">
+                <a href="./Ajout.php">
+                    <img src="../img/ajout.jpg" alt="Ajout d'arbres">
+                </a>
                 <h2>Ajout d'arbres</h2>
-                <p>Vous venez de planter un arbre, ajoutez-le au site</p>
+                <p>Vous venez de planter un arbre, ajoutez-le au site</p>  
             </div>
             <div class="grid-item">
-                <img src="../img/visu.jpg" alt="Visualisation">
+                <a href="visualisation.php">
+                    <img src="../img/visu.jpg" alt="Visualisation">
+                </a>
                 <h2>Visualisation</h2>
                 <p>Visualisez les arbres de la ville de Saint-Quentin dans un tableau ou sur une carte.</p>
+                
             </div>
             <div class="grid-item">
-                <img src="../img/prediction.jpg" alt="Prediction">
+                <a href="./prediction.php">
+                    <img src="../img/prediction.jpg" alt="Prediction">
+                </a>
                 <h2>Prediction</h2>
                 <p>Prédisez l'emplacement des arbres et leur cluster.</p>
+                
             </div>
             <div class="grid-item">
-                <img src="../img/contact.jpg" alt="Contact">
+                <a href="./contact.php">
+                    <img src="../img/contact.jpg" alt="Contact">
+                </a>
                 <h2>Contact</h2>
                 <p>En cas de problème, n'hésitez pas à contacter l'équipe.</p>
             </div>

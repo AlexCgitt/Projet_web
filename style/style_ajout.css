@@ -45,63 +45,45 @@ main {
     padding: 2em;
 }
 
-main .title-section {
-    text-align: center;
-    margin-bottom: 2em;
+.form-container {
+    margin-right: auto;
+    margin-left: 0;
+    max-width: 800px;
 }
 
-main .title-section h1 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 2.5em;
+.form-block .full-width {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5em;
-}
-
-main .title-section p {
-    color: #818181;
-}
-
-.display-choice {
-    text-align: center;
-}
-
-.display-choice h2 {
-    font-size: 1.5em;
+    flex-wrap: wrap;
+    justify-content: space-between;
     margin-bottom: 1em;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1em;
-    padding: 1em;
+.form-block .col-half {
+    flex: 0 0 48%;
 }
 
-.grid-item {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    text-align: center;
-    padding: 0.5em;
+.form-block .col-full {
+    flex: 0 0 100%;
 }
 
-.grid-item img {
+.input-field {
     width: 100%;
-    height: auto;
-    display: block;
-    margin-bottom: 0.5em;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 12px;
 }
 
-.grid-item h3 {
+.btn-submit {
+    width: 20%;
+    margin-left: 35%;
+    padding: 1em;
+    background: black;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
     font-size: 1em;
-    margin-bottom: 0.5em;
-}
-
-
-.grid-item p {
-    color: #555;
+    cursor: pointer;
 }
 
 footer {
@@ -109,18 +91,17 @@ footer {
     padding: 25px 100px;
 }
 
-footer .centre {
+footer .centre{
     text-align: center;
-    margin-bottom: 1em;
 }
 
-footer .colonnes {
+footer .colonnes{
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-/* Media Queries */
+/* Media Queries pour rendre le header et le site responsive */
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
@@ -142,11 +123,21 @@ footer .colonnes {
         text-align: right;
     }
 
-    main .title-section h1 {
-        font-size: 2em;
+    main .title-section {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .grid-container {
         grid-template-columns: 1fr;
+    }
+
+    .form-block .full-width {
+        flex-direction: column;
+    }
+
+    .form-block .col-half {
+        flex: 0 0 100%;
+        margin-bottom: 1em;
     }
 }
