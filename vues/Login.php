@@ -17,7 +17,7 @@
         </div>
         <ul>
             <li><a href="#">Ajout d'arbres</a></li>
-            <li><a href="#">Visualisation</a></li>
+            <li><a href="./visualisation.php">Visualisation</a></li>
             <li><a href="#">Prediction</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
