@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="../style/style_acceuil.css">
-    <title>Saint Quentree</title>
+    <title>SAINT-QUENTREE</title>
 </head>
 <body>
     <nav>
         <div class="logo">
-            <img src="image/logo.png" alt="logo">
+            <img src="../img/logo.png" alt="logo">
         </div>
         <ul>
             <li><a href="#">Ajout d'arbres</a></li>
@@ -25,26 +25,26 @@
     </nav>
     
     <main>
-        <h1>Saint Quentree</h1>
+        <h1>SAINT-QUENTREE</h1>
         <p>Description du site</p>
         <section class="grid-container">
             <div class="grid-item">
-                <img src="image1.png" alt="Ajout d'arbres">
+                <img src="../img/ajout.jpg" alt="Ajout d'arbres">
                 <h2>Ajout d'arbres</h2>
                 <p>Vous venez de planter un arbre, ajoutez-le au site</p>
             </div>
             <div class="grid-item">
-                <img src="image2.png" alt="Visualisation">
+                <img src="../img/visu.jpg" alt="Visualisation">
                 <h2>Visualisation</h2>
                 <p>Visualisez les arbres de la ville de Saint-Quentin dans un tableau ou sur une carte.</p>
             </div>
             <div class="grid-item">
-                <img src="image3.png" alt="Prediction">
+                <img src="../img/prediction.jpg" alt="Prediction">
                 <h2>Prediction</h2>
                 <p>Prédisez l'emplacement des arbres et leur cluster.</p>
             </div>
             <div class="grid-item">
-                <img src="image4.png" alt="Contact">
+                <img src="../img/contact.jpg" alt="Contact">
                 <h2>Contact</h2>
                 <p>En cas de problème, n'hésitez pas à contacter l'équipe.</p>
             </div>
@@ -55,9 +55,6 @@
         <div class="contact-info">
             <p>Contact</p>
             <p>&copy; Saint Quentree</p>
-        </div>
-        <div class="map">
-            <img src="map.png" alt="Map">
         </div>
     </footer>
 </body>
