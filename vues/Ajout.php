@@ -9,15 +9,17 @@
     <title>SAINT-QUENTREE - Ajout d'arbre</title>
 </head>
 <body>
-    <nav>
+<nav>
         <div class="logo">
-            <img src="../img/logo.png" alt="logo">
+            <a href="./Acceuil.php">
+                <img src="../img/logo.png" alt="logo">
+            </a>
         </div>
         <ul>
             <li><a href="./Ajout.php">Ajout d'arbres</a></li>
             <li><a href="./visualisation.php">Visualisation</a></li>
-            <li><a href="./prediction">Prediction</a></li>
-            <li><a href="./contact">Contact</a></li>
+            <li><a href="./prediction.php">Prediction</a></li>
+            <li><a href="./contact.php">Contact</a></li>
         </ul>
         <div class="login">
             <a href="./Login.php">log in / log out</a>
