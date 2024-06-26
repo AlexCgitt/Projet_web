@@ -30,8 +30,8 @@
     
     <main>
         <div class="title-section">
-            <h1>Prédiction <span class="material-symbols-outlined">forest</span></h1>
-            <p>Quelle prédiction souhaitez vous observer</p>
+            <h1>Remplir le formulaire<span class="material-symbols-outlined">forest</span></h1>
+            <p>Vous souhaitez ajouter un arbre à notre base de données, n'hésitez pas.</p>
         </div>
         <div class="content-container">
             <div class="form-container">   
