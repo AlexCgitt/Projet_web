@@ -5,19 +5,72 @@ $("#tableau").click(function (event) {
 
 console.log("visualisation.js")
 
+var keys = ['id_arbre', 'longitude', 'latitude', 'nom_stadedev', 'nomtech', 'clc_nbr_diag', 'haut_tot', 'haut_tronc', 'tronc_diam', 'nom_feuillage'];
+
+var fieldOptions = '';
+keys.forEach(function(key) {
+    fieldOptions += '<option value="' + key + '">' + key + '</option>';
+});
+
+var html = '<span>Trier par: </span><select id="sortField">' + fieldOptions + '</select>';
+html += '<span>Par ordre: </span><select id="sortOrder"><option value="asc">Croissant</option><option value="desc">Décroissant</option></select>';
+html += '<button id="trier">Trier</button>';
+
+$("#filtres").html(html);
+
 compt_page = 0 //nombre de page
 var treesPerPage = 5; // Nombre d'arbres à afficher par page
 
 
-function loadTableau(trees) {
-    console.log("aaaaaaaaaaaaaaaaaaaa");
+function loadTableau(trees_original) {
+    
+
+    console.log(trees_original);
+    //copie le tableau trees
+    trees = trees_original.slice();
     console.log(trees);
+
+    compt_page = 0 //nombre de page
+    var treesPerPage = 5; // Nombre d'arbres à afficher par page
+    
+
+    // Application du tri en fonction des options sélectionnées
+    var sortField = $("#sortField").val();
+    var sortOrder = $("#sortOrder").val();
+
+    //trie le tableau trees dans l'ordre du sortOrder, à partir de la colonne sortField
+    trees.sort(function(a, b) {
+        // Si nous trions par 'id_arbre', convertissons les valeurs en nombres
+        if (sortField === 'id_arbre') {
+            // Convertir en entiers pour comparer numériquement
+            return (sortOrder === 'asc' ? 1 : -1) * (parseInt(a[sortField]) - parseInt(b[sortField]));
+        }
+    
+        // Pour les autres champs, continuez avec le tri lexicographique
+        if (a[sortField] < b[sortField]) {
+            return sortOrder === 'asc' ? -1 : 1;
+        }
+        if (a[sortField] > b[sortField]) {
+            return sortOrder === 'asc' ? 1 : -1;
+        }
+        return 0;
+    });
+    
 
     var startIndex = compt_page * treesPerPage;
     var endIndex = startIndex + treesPerPage;
     var slicedTrees = trees.slice(startIndex, endIndex); // Ne prend que les arbres pour la page actuelle
+    html = ""
+    html += "<table>";
+    // rajoute la ligne titre avec les differentes colonnes
+    html += "<tr>";
+    keys.forEach(function(key) {
+        html += "<th>"+key+"</th>";
+    });
+    html += "<th>Action</th>";
+    html += "</tr>";
 
-    var html = "<table>";
+
     slicedTrees.forEach(function(tree) {
         html += "<tr>";
         html += "<td>"+tree.id_arbre+"</td>";
@@ -44,14 +97,19 @@ function loadTableau(trees) {
     $("#avant").click(function() {
         if (compt_page > 0) {
             compt_page--;
-            loadTableau(trees); // Recharger la table avec la nouvelle page
+            loadTableau(trees_original); // Recharger la table avec la nouvelle page
         }
     });
 
     $("#apres").click(function() {
         if (endIndex < trees.length) {
             compt_page++;
-            loadTableau(trees); // Recharger la table avec la nouvelle page
+            loadTableau(trees_original); // Recharger la table avec la nouvelle page
         }
+    });
+
+    // Écouteur d'événements pour les sélections de tri
+    $("#trier").click(function() {
+        loadTableau(trees_original); // Recharger le tableau avec les nouvelles options de tri
     });
 }

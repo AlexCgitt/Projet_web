@@ -51,6 +51,8 @@
                 </div>
             </div>
         </section>
+        <div id="recherche"></div>
+        <div id="filtres"></div>
         <div id="tableau_load"></div>
     </main>
 
