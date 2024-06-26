@@ -35,7 +35,7 @@
         </div>
         <div class="content-container">
             <div class="form-container">   
-                <form action="" class="form-block"> <!--// mettre un dans action POST car on envoie des données -->
+                <form action="AjoutDB.php" class="form-block" method="POST"> <!--// mettre un dans action POST car on envoie des données -->
                     <div class="full-width"> <!-- // on va créer une rangée de 2 colonnes -->
                         <div class="col-half">
                             <label for="longitude">Longitude</label>
@@ -52,7 +52,7 @@
                             <select name="stade_developpement" class="input-field">
                                 <option value="Jeune">jeune</option>
                                 <option value="Adulte">adulte</option>
-                                <option value="Vieux">vieux</option>
+                                <option value="vieux">vieux</option>
                                 <option value="senescent">senescent</option>
                             </select>
                         </div>
@@ -91,8 +91,8 @@
                         <div class="col-full">
                             <label for="feuillage">Feuillage</label>
                             <select name="feuillage" class="input-field">
-                                <option value="feuillu">feuillu</option>
-                                <option value="conifere">conifère</option>
+                                <option value="feuillu">Feuillu</option>
+                                <option value="conifere">Conifère</option>
                             </select>
                         </div>
                     </div>

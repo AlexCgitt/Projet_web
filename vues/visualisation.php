@@ -86,5 +86,8 @@
     mapbox: {style: 'open-street-map', center: {lat: 49.847066, lon: 3.2874}, zoom: 12},
     margin: {r: 0, t: 0, l: 0, b: 0}
     }; Plotly.newPlot('map', data, layout);</script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="../js/Ajax.js"></script>
+    <script src="../js/visualisation.js"></script>
 </body>
 </html>
