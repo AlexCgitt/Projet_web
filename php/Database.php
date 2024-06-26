@@ -28,11 +28,11 @@ function dbConnect()
 function dbRequestArbres($db)
 {
     try {
-        $request = 'SELECT a.longitude, a.latitude, a.haut_tot, a.haut_tronc, a.tronc_diam, a.clc_nbr_diag, a.remarquable, a.revetement, a.date_ajout , ae.nom_arbreetat, f.nom_feuillage, nt.nomtech, pi.nom_pied, po.nom_port, q.nom_quartier, se.nom_secteur, si.nom_situation, sd.nom_stadedev, vc.nom_villeca
+        $request = 'SELECT a.id_arbre, a.longitude, a.latitude, a.haut_tot, a.haut_tronc, a.tronc_diam, a.clc_nbr_diag, a.remarquable, a.revetement , ae.nom_arbreetat, f.nom_feuillage, nt.nomtech, pi.nom_pied, po.nom_port, q.nom_quartier, se.nom_secteur, si.nom_situation, sd.nom_stadedev, vc.nom_villeca
         FROM Arbre a
         JOIN ArbreEtat ae ON a.id_arbreetat = ae.id_arbreetat
         JOIN Feuillage f ON a.id_feuillage = f.id_feuillage
-        JOIN Nomtech nt ON a.id_nomtech = nt.id_nomtech
+        JOIN NomTech nt ON a.id_nomtech = nt.id_nomtech
         JOIN Pied pi ON a.id_pied = pi.id_pied
         JOIN Port po ON a.id_port = po.id_port
         JOIN Quartier q ON a.id_quartier = q.id_quartier
@@ -40,6 +40,7 @@ function dbRequestArbres($db)
         JOIN Situation si ON a.id_situation = si.id_situation
         JOIN Stadedev sd ON a.id_stadedev = sd.id_stadedev
         JOIN Villeca vc ON a.id_villeca = vc.id_villeca
+        ORDER BY a.id_arbre ASC
         ';
 
         $statement = $db->prepare($request);
@@ -50,4 +51,43 @@ function dbRequestArbres($db)
         return false;
     }
     return $result;
+}
+
+function dbAddArbres($db, $longitude ,$latitude, $haut_tot, $haut_tronc, $tronc_diam, $clc_nbr_diag, $remarquable, $revetement, $nom_stadedev, $identifiant, $nomtech, $nom_port, $nom_villeca, $nom_pied, $nom_feuillage, $nom_situation, $nom_arbreetat,$nom_secteur,$nom_quartier){
+
+    try {
+        $id_stadedev = "SELECT id_stadedev FROM Stadedev WHERE nom_stadedev = '$nom_stadedev'";
+        $id_nomtech = "SELECT id_nomtech FROM Nomtech WHERE nomtech = '$nomtech'";
+        $id_port = "SELECT id_port FROM Port WHERE nom_port = '$nom_port'";
+        $id_villeca = "SELECT id_villeca FROM Villeca WHERE nom_villeca = '$nom_villeca'";
+        $id_pied = "SELECT id_pied FROM Pied WHERE nom_pied = '$nom_pied'";
+        $id_feuillage = "SELECT id_feuillage FROM Feuillage WHERE nom_feuillage = '$nom_feuillage'";
+        $id_situation = "SELECT id_situation FROM Situation WHERE nom_situation = '$nom_situation'";
+        $id_arbreetat = "SELECT id_arbreetat FROM ArbreEtat WHERE nom_arbreetat = '$nom_arbreetat'";
+        $id_secteur = "SELECT id_secteur FROM Secteur WHERE nom_secteur = '$nom_secteur'";
+        $id_quartier = "SELECT id_quartier FROM Quartier WHERE nom_quartier = '$nom_quartier'";
+
+        $request = 'INSERT INTO Arbre (longitude, latitude, haut_tot, haut_tronc, tronc_diam, clc_nbr_diag, remarquable, revetement, id_stadedev, identifiant, id_nomtech, id_port, id_villeca, id_pied, id_feuillage, id_situation, id_arbreetat, id_secteur, id_quartier) VALUES (:longitude, :latitude, :haut_tot, :haut_tronc, :tronc_diam, :clc_nbr_diag, :remarquable, :revetement, :id_stadedev, :identifiant, :id_nomtech, :id_port, :id_villeca, :id_pied, :id_feuillage, :id_situation, :id_arbreetat, :id_secteur, :id_quartier)';
+        $statement = $db->prepare($request);
+        $statement->bindParam(':longitude', $longitude);
+        $statement->bindParam(':latitude', $latitude);
+        $statement->bindParam(':haut_tot', $haut_tot);
+        $statement->bindParam(':haut_tronc', $haut_tronc);
+        $statement->bindParam(':tronc_diam', $tronc_diam);
+        $statement->bindParam(':clc_nbr_diag', $clc_nbr_diag);
+        $statement->bindParam(':remarquable', $remarquable);
+        $statement->bindParam(':revetement', $revetement);
+        $statement->bindParam(':id_stadedev', $id_stadedev);
+        $statement->bindParam(':identifiant', $identifiant);
+        $statement->bindParam(':id_nomtech', $id_nomtech);
+        $statement->bindParam(':id_port', $id_port);
+        $statement->bindParam(':id_villeca', $id_villeca);
+        $statement->bindParam(':id_pied', $id_pied);
+        $statement->bindParam(':id_feuillage', $id_feuillage);
+        $statement->bindParam(':id_situation', $id_situation);
+        $statement->bindParam(':id_arbreetat', $id_arbreetat);
+        $statement->bindParam(':id_secteur', $id_secteur);
+        $statement->bindParam(':id_quartier', $id_quartier);
+        $statement->execute();
+    }
 }

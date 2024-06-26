@@ -85,8 +85,6 @@ with open("remplissage.sql", "a", encoding="utf-8") as f:
         clc_quartier = data['clc_quartier'][i]
         index_quartier = tables['clc_quartier'].index(clc_quartier) + 1
         clc_secteur = data['clc_secteur'][i]
-        print(clc_secteur)
-        print("a")
         #je veux trouver l'indice du tableau tables['clc_secteur'] qui a pour valeur à l'indice 0 clc_secteur
 
         for j, element in enumerate(tables['clc_secteur']):
