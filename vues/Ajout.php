@@ -30,12 +30,13 @@
     
     <main>
         <div class="title-section">
-            <h1>Prédiction <span class="material-symbols-outlined">forest</span></h1>
-            <p>Quelle prédiction souhaitez vous observer</p>
+            <h1>Remplir le formulaire<span class="material-symbols-outlined">forest</span></h1>
+            <p>Vous souhaitez ajouter un arbre à notre base de données, n'hésitez pas.</p>
         </div>
         <div class="content-container">
             <div class="form-container">   
-                <form action="" class="form-block"> <!--// mettre un dans action POST car on envoie des données -->
+                <form action="AjoutDB.php" class="form-block" method="POST"> <!--// mettre un dans action POST car on envoie des données -->
+                <form action="AjoutDB.php" class="form-block" method="POST"> <!--// mettre un dans action POST car on envoie des données -->
                     <div class="full-width"> <!-- // on va créer une rangée de 2 colonnes -->
                         <div class="col-half">
                             <label for="longitude">Longitude</label>
@@ -52,6 +53,9 @@
                             <select name="stade_developpement" class="input-field">
                                 <option value="Jeune">jeune</option>
                                 <option value="Adulte">adulte</option>
+                                <option value="vieux">vieux</option>
+                                <option value="Jeune">Jeune</option>
+                                <option value="Adulte">Adulte</option>
                                 <option value="Vieux">vieux</option>
                                 <option value="senescent">senescent</option>
                             </select>
@@ -91,8 +95,10 @@
                         <div class="col-full">
                             <label for="feuillage">Feuillage</label>
                             <select name="feuillage" class="input-field">
-                                <option value="feuillu">feuillu</option>
-                                <option value="conifere">conifère</option>
+                                <option value="feuillu">Feuillu</option>
+                                <option value="conifere">Conifère</option>
+                                <option value="feuillu">Feuillu</option>
+                                <option value="conifere">Conifère</option>
                             </select>
                         </div>
                     </div>
