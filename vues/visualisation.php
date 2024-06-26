@@ -34,23 +34,24 @@
         <section class="display-choice">
             <h2>Choisissez l’affichage que vous souhaitez.</h2>
             <div class="grid-container">
-                <div class="grid-item">
+                <div id="tableau" class="grid-item">
                     <img src="../img/tableau_arbre.jpg" alt="Tableau des arbres">
                     <h3>Tableau des arbres</h3>
                     <p>Click</p>
                 </div>
-                <div class="grid-item">
+                <div id="carte" class="grid-item">
                     <img src="../img/carte_arbre.jpg" alt="Carte avec les arbres">
                     <h3>Carte avec les arbres</h3>
                     <p>Click</p>
                 </div>
-                <div class="grid-item">
+                <div id="tableau_carte" class="grid-item">
                     <img src="../img/tableau_carte_arbre.jpg" alt="Tableau et carte avec nos arbres">
                     <h3>Tableau et carte avec nos arbres</h3>
                     <p>Click</p>
                 </div>
             </div>
         </section>
+        <div id="tableau_load"></div>
     </main>
 
     <footer>
@@ -70,5 +71,8 @@
         </div>
 
     </footer>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="js/Ajax.js"></script>
+    <script src="js/visualisation.js"></script>
 </body>
 </html>
