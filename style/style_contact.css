@@ -42,52 +42,59 @@ nav .login a {
 }
 
 main {
-    text-align: center;
     padding: 2em;
 }
 
-main h1 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 2.5em;
-    margin-bottom: 0.5em;
-}
-
-main p {
-    color: #818181;
+main .title-section {
+    text-align: center;
     margin-bottom: 2em;
 }
 
-.login-form {
-    max-width: 400px;
-    margin: 0 auto;
-    text-align: left;
+main .title-section h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
 }
 
-.login-form label {
-    margin-left: 2%;
+main .title-section p {
+    color: #818181;
+}
+
+.team {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1em;
+    padding: 1em;
+}
+
+.team-member {
+    flex: 1 1 30%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    padding: 0.5em;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.team-member img {
+    width: 100%;
+    height: auto;
     display: block;
     margin-bottom: 0.5em;
-    font-weight: bold;
 }
 
-.login-form input {
-    width: 100%;
-    padding: 0.5em;
-    margin-bottom: 1em;
-    border: 1px solid #ddd;
-    border-radius: 12px;
+.team-member h3 {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
 }
 
-.login-form button {
-    margin-top: 3%;
-    width: 100%;
-    padding: 0.75em;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-weight: bold;
-    cursor: pointer;
+.team-member p {
+    color: #555;
 }
 
 footer {
@@ -110,24 +117,7 @@ footer .colonne p {
     margin: 0.5em 0;
 }
 
-footer .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 1em;
-    margin-top: 0.5em;
-}
-
-footer .social-icons a {
-    color: black;
-    font-size: 1.5em;
-    text-decoration: none;
-}
-
-footer .social-icons a:hover {
-    color: green;
-}
-
-
+/* Media Queries */
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
@@ -149,8 +139,16 @@ footer .social-icons a:hover {
         text-align: right;
     }
 
-    main .title-section {
+    main .title-section h1 {
+        font-size: 2em;
+    }
+
+    .team {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+    }
+
+    .team-member {
+        width: 80%;
     }
 }
