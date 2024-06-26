@@ -73,10 +73,11 @@ main .title-section p {
 }
 
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1em;
-    padding: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    gap: 4em; 
+    padding: 1em; 
 }
 
 .grid-item {
@@ -85,13 +86,15 @@ main .title-section p {
     overflow: hidden;
     text-align: center;
     padding: 0.5em;
+    width: 250px; 
+    height: 300px; 
 }
 
 .grid-item img {
-    width: 100%;
+    width: 90%; 
     height: auto;
     display: block;
-    margin-bottom: 0.5em;
+    margin: 0 auto 0.5em auto; /* Centre l'image horizontalement et ajoute une marge inférieure */
 }
 
 .grid-item h3 {
@@ -118,6 +121,27 @@ footer .colonnes {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+}
+
+footer .colonne p {
+    margin: 0.5em 0;
+}
+
+footer .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 0.5em;
+}
+
+footer .social-icons a {
+    color: black;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+footer .social-icons a:hover {
+    color: green;
 }
 
 /* Media Queries */

@@ -45,10 +45,44 @@ main {
     padding: 2em;
 }
 
+main .title-section {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+main .title-section h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+}
+
+main .title-section p {
+    color: #818181;
+}
+
+.content-container {
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+    align-items: flex-start;
+}
+
 .form-container {
-    margin-right: auto;
-    margin-left: 0;
     max-width: 800px;
+    padding: 0 1em;
+}
+
+.image-container {
+    max-width: 400px;
+    padding: 0 1em;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
 }
 
 .form-block .full-width {
@@ -91,14 +125,36 @@ footer {
     padding: 25px 100px;
 }
 
-footer .centre{
+footer .centre {
     text-align: center;
+    margin-bottom: 1em;
 }
 
-footer .colonnes{
+footer .colonnes {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+footer .colonne p {
+    margin: 0.5em 0;
+}
+
+footer .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 0.5em;
+}
+
+footer .social-icons a {
+    color: black;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+footer .social-icons a:hover {
+    color: green;
 }
 
 /* Media Queries pour rendre le header et le site responsive */
@@ -139,5 +195,18 @@ footer .colonnes{
     .form-block .col-half {
         flex: 0 0 100%;
         margin-bottom: 1em;
+    }
+
+    .content-container {
+        flex-direction: column;
+    }
+
+    .image-container {
+        margin-top: 1em;
+    }
+
+    .btn-submit {
+        margin-left: 0;
+        width: 100%;
     }
 }
