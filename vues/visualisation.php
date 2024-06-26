@@ -51,6 +51,7 @@
                 </div>
             </div>
         </section>
+        <div id="tableau_load"></div>
     </main>
 
     <footer>
@@ -70,5 +71,8 @@
         </div>
 
     </footer>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="js/Ajax.js"></script>
+    <script src="js/visualisation.js"></script>
 </body>
 </html>
