@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="../style/style_visu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <title>SAINT-QUENTREE - Visualisation</title>
 </head>
 <body>
@@ -17,9 +19,9 @@
         </div>
         <ul>
             <li><a href="./Ajout.php">Ajout d'arbres</a></li>
-            <li><a href="./visualisation">Visualisation</a></li>
-            <li><a href="./prediction">Prediction</a></li>
-            <li><a href="./contact">Contact</a></li>
+            <li><a href="./visualisation.php">Visualisation</a></li>
+            <li><a href="./prediction.php">Prediction</a></li>
+            <li><a href="./contact.php">Contact</a></li>
         </ul>
         <div class="login">
             <a href="./Login.php">log in / log out</a>
@@ -29,7 +31,7 @@
     <main>
         <div class="title-section">
             <h1>Visualisation <span class="material-symbols-outlined">forest</span></h1>
-            <p>Visualisé les différents arbres de Saint Quentin en haut de france, pes</p>
+            <p>Visualisé les différents arbres de Saint Quentin en haut de france</p>
         </div>
         <section class="display-choice">
             <h2>Choisissez l’affichage que vous souhaitez.</h2>
@@ -58,21 +60,29 @@
         <p class="centre">SAINT-QUENTREE</p>
         <div class="colonnes">
             <div class="colonne">
-                <p>Contact</p>
-                <p>instagram</p>
-                <p>facebook</p>
-                <p>twitter</p>
+                <p class="centre">Contact</p>
+                <div class="social-icons">
+                    <a class="facebook" href="https://www.facebook.com/villedesaintquentin.OFFICIEL/?locale=fr_FR"><i class="fa-brands fa-facebook"></i></a>
+                    <a class="twitter" href="https://x.com/a_saint_quentin"><i class="fa-brands fa-twitter"></i></a>
+                    <a class="insta" href="https://www.instagram.com/villesaintquentin/"><i class="fa-brands fa-instagram"></i></a>
+                    <a class="internet" href="https://www.saint-quentin.fr/"><i class="fa-brands fa-internet-explorer"></i></a>   
+                </div>
+            </div>
+            <div class="colonnes">
+                <div id="map" style="width: 50%; height: 30vh;"></div>
             </div>
             <div class="colonne">
                 <p>Adresse</p>
                 <p>1 rue des arbres</p>
                 <p>02100 Saint-Quentin</p>
-
+            </div>
         </div>
-
     </footer>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="js/Ajax.js"></script>
-    <script src="js/visualisation.js"></script>
+    <script>var data = [{
+                type: 'scattermapbox',
+            }];var layout = {
+    mapbox: {style: 'open-street-map', center: {lat: 49.847066, lon: 3.2874}, zoom: 12},
+    margin: {r: 0, t: 0, l: 0, b: 0}
+    }; Plotly.newPlot('map', data, layout);</script>
 </body>
 </html>

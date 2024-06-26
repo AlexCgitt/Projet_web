@@ -68,39 +68,6 @@ main .title-section p {
     color: #818181;
 }
 
-/*.grid-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2%;
-    padding: 0 3em;
-}
-
-.grid-item {
-    max-width: 300px;
-    margin: auto; 
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    text-align: left;
-    padding: 0 1em;
-}
-
-.grid-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin-bottom: 1em;
-}
-
-.grid-item h2 {
-    font-size: 1.5em;
-    margin-bottom: 0.5em;
-}
-
-.grid-item p {
-    color: #555;
-}*/
-
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -137,16 +104,38 @@ footer {
     padding: 25px 100px;
 }
 
-footer .centre{
+footer .centre {
     text-align: center;
-
+    margin-bottom: 1em;
 }
 
-footer .colonnes{
+footer .colonnes {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
-  }
+    flex-wrap: wrap;
+}
+
+footer .colonne p {
+    margin: 0.5em 0;
+}
+
+footer .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 0.5em;
+}
+
+footer .social-icons a {
+    color: black;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+footer .social-icons a:hover {
+    color: green;
+}
+
 
 /* Media Queries pour rendre le header et le site responsive */
 @media (max-width: 768px) {
