@@ -54,6 +54,9 @@
                     <a class="internet" href="https://www.saint-quentin.fr/"><i class="fa-brands fa-internet-explorer"></i></a>   
                 </div>
             </div>
+            <div class="colonnes">
+                <div id="map" style="width: 50%; height: 30vh;"></div>
+            </div>
             <div class="colonne">
                 <p>Adresse</p>
                 <p>1 rue des arbres</p>
@@ -61,6 +64,14 @@
             </div>
         </div>
     </footer>
+    <script>var data = [{
+                type: 'scattermapbox',
+            }];var layout = {
+    mapbox: {style: 'open-street-map', center: {lat: 49.847066, lon: 3.2874}, zoom: 12},
+    margin: {r: 0, t: 0, l: 0, b: 0}
+    }; Plotly.newPlot('map', data, layout);</script>
+
+
 
 </body>
 </html>
