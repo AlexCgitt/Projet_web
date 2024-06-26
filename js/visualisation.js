@@ -5,6 +5,8 @@ $("#tableau").click(function (event) {
 
 console.log("visualisation.js")
 
+
+
 var keys = ['id_arbre', 'longitude', 'latitude', 'nom_stadedev', 'nomtech', 'clc_nbr_diag', 'haut_tot', 'haut_tronc', 'tronc_diam', 'nom_feuillage'];
 
 var fieldOptions = '';
@@ -23,16 +25,10 @@ var treesPerPage = 5; // Nombre d'arbres à afficher par page
 
 
 function loadTableau(trees_original) {
-    
-
-    console.log(trees_original);
+    // console.log(trees_original);
     //copie le tableau trees
     trees = trees_original.slice();
-    console.log(trees);
-
-    compt_page = 0 //nombre de page
-    var treesPerPage = 5; // Nombre d'arbres à afficher par page
-    
+    console.log(trees);    
 
     // Application du tri en fonction des options sélectionnées
     var sortField = $("#sortField").val();
@@ -96,6 +92,8 @@ function loadTableau(trees_original) {
     // Gestion des clics sur les boutons de pagination
     $("#avant").click(function() {
         if (compt_page > 0) {
+            console.log(compt_page)
+
             compt_page--;
             loadTableau(trees_original); // Recharger la table avec la nouvelle page
         }
@@ -103,6 +101,8 @@ function loadTableau(trees_original) {
 
     $("#apres").click(function() {
         if (endIndex < trees.length) {
+            console.log(compt_page)
+
             compt_page++;
             loadTableau(trees_original); // Recharger la table avec la nouvelle page
         }
@@ -110,6 +110,7 @@ function loadTableau(trees_original) {
 
     // Écouteur d'événements pour les sélections de tri
     $("#trier").click(function() {
+        compt_page=0;
         loadTableau(trees_original); // Recharger le tableau avec les nouvelles options de tri
     });
 }
