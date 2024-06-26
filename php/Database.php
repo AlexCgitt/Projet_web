@@ -1,22 +1,34 @@
 <?php
 
-
-require_once('Constantes.php');
+require_once("Constantes.php");
 //----------------------------------------------------------------------------
 //--- dbConnect --------------------------------------------------------------
 //----------------------------------------------------------------------------
 // Create the connection to the database.
 // \return False on error and the database otherwise.
-function dbConnect()
-{
-    try {
-        $db = new PDO('pgsql:host=' . DB_SERVER . ';port=' . DB_PORT . ';dbname=' . DB_NAME, DB_USER, DB_PASSWORD);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $exception) {
-        error_log('Connection error: ' . $exception->getMessage());
-        return false;
+class Database {
+    static $db=null;
+    static function connexionDB()
+    {
+        if (self::$db != null) {
+            return self::$db;
+        }
+
+        try {
+            $db = new PDO(
+                "mysql:dbname=".DB_NAME.";host=".DB_SERVER.";port=".DB_PORT,
+                DB_USER,
+                DB_PASSWORD);
+            $db->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES 'utf8'");
+        }
+        catch (PDOException $exception) {
+            error_log('Connection error: ' . $exception->getMessage());
+            return false;
+        }
+
+        self::$db = $db;
+        return $db;
     }
-    return $db;
 }
 
 //----------------------------------------------------------------------------
@@ -28,7 +40,7 @@ function dbConnect()
 function dbRequestArbres($db)
 {
     try {
-        $request = 'SELECT a.id_arbre, a.longitude, a.latitude, a.haut_tot, a.haut_tronc, a.tronc_diam, a.clc_nbr_diag, a.remarquable, a.revetement , ae.nom_arbreetat, f.nom_feuillage, nt.nomtech, pi.nom_pied, po.nom_port, q.nom_quartier, se.nom_secteur, si.nom_situation, sd.nom_stadedev, vc.nom_villeca
+        $request = 'SELECT a.id_arbre, a.longitude, a.latitude, a.haut_tot, a.haut_tronc, a.tronc_diam, a.clc_nbr_diag, a.remarquable, a.revetement, a.identifiant , ae.nom_arbreetat, f.nom_feuillage, nt.nomtech, pi.nom_pied, po.nom_port, q.nom_quartier, se.nom_secteur, si.nom_situation, sd.nom_stadedev, vc.nom_villeca
         FROM Arbre a
         JOIN ArbreEtat ae ON a.id_arbreetat = ae.id_arbreetat
         JOIN Feuillage f ON a.id_feuillage = f.id_feuillage
@@ -90,4 +102,9 @@ function dbAddArbres($db, $longitude ,$latitude, $haut_tot, $haut_tronc, $tronc_
         $statement->bindParam(':id_quartier', $id_quartier);
         $statement->execute();
     }
+    catch (PDOException $exception) {
+        error_log('Connection error: '.$exception->getMessage());
+        return false;
+    }
 }
+?>

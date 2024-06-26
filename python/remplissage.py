@@ -1,6 +1,6 @@
 import pandas as pd
 
-data = pd.read_csv('csv/Data_Arbre.csv', encoding='utf-8')
+data = pd.read_csv('Projet_web/csv/Data_Arbre.csv', encoding='utf-8')
 
 print(data.columns)
 
@@ -39,7 +39,7 @@ for i in range(len(data)):
 print(tables)
 
 
-with open("remplissage.sql", "w", encoding="utf-8") as f:
+with open("Projet_web/sql/remplissage.sql", "w", encoding="utf-8") as f:
 
     for clc_quartier in tables['clc_quartier']:
         f.write(f"INSERT INTO Quartier (nom_quartier) VALUES (\"{clc_quartier}\");\n")
@@ -79,7 +79,7 @@ with open("remplissage.sql", "w", encoding="utf-8") as f:
 #on récupère l'id de la table quartier associée à la ligne
 #on rentre l'arbre dans la base de données
 
-with open("remplissage.sql", "a", encoding="utf-8") as f:
+with open("Projet_web/sql/remplissage.sql", "a", encoding="utf-8") as f:
 
     for i in range(len(data)):
         clc_quartier = data['clc_quartier'][i]
