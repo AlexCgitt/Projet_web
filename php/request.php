@@ -11,28 +11,33 @@ if ($id == '')
     $id = NULL;
 $result = null;
 
-$db = dbRequestArbres(dbConnect());
+$db = Database::connexionDB();
+if (!$db) {
+    header('HTTP/1.1 503 Service Unavailable');
+    exit;
+}
 
 switch ($requestRessource) {
     case "arbres":
         switch($requestMethod){
             case "GET":
-                $result = dbRequestArbres($db);
+                $result= dbRequestArbres($db) ;
                 break;
         }
         break;
 }
 
-if (!empty($result) or $requestRessource=='recherche' or $requestRessource=='historique') {
+if (!empty($result)) {
+    
     header('Content-Type: application/json; charset=utf-8');
     header('Cache-control: no-store, no-cache, must-revalidate');
     header('Pragma: no-cache');
     header('HTTP/1.1 200 OK');
     echo json_encode($result);
     exit();
+    
 }
 
 // Bad request case.
 header('HTTP/1.1 400 Bad Request');
-
 ?>    
