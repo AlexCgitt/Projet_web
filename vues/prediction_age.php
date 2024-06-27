@@ -32,7 +32,9 @@
         <div class="title-section">
             <h1>Prédiction de l'âge d'un arbre<span class="material-symbols-outlined">forest</span></h1>
             <p>prediction de l'âge de l'arbre</p>
+
         </div>
+        <div id="predictions_age"></div>
           
     </main>
 
@@ -64,6 +66,9 @@
     mapbox: {style: 'open-street-map', center: {lat: 49.847066, lon: 3.2874}, zoom: 12},
     margin: {r: 0, t: 0, l: 0, b: 0}
     }; Plotly.newPlot('map', data, layout);</script>
-    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="../js/Ajax.js"></script>
+    <script src="../js/prediction_age.js"></script>
+
 </body>
 </html>

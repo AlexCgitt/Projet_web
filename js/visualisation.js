@@ -179,9 +179,5 @@ function LoadAll(trees){
 $("#tableau_load").on("click", "button", function() {
     console.log("click age")
     var id_arbre = $(this).attr("id_arbre");
-    ajaxRequest("GET", "../php/request.php/age/"+id_arbre, function(response) {
-        console.log(response)
-        console.log(response["DecisionTree"])
-        //alert("L'age de l'arbre est de " + response.age + " ans.");
-    });
+    window.location.href = "../vues/prediction_age.php?id_arbre=" + id_arbre;
 });
