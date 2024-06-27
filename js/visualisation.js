@@ -83,7 +83,7 @@ function loadTableau(trees_original) {
         html += "<td>"+tree.haut_tronc+"</td>";
         html += "<td>"+tree.tronc_diam+"</td>";
         html += "<td>"+tree.nom_feuillage+"</td>";
-        html += "<td><a href='../vues/prediction_age.php'><button id_arbre="+ tree.id_arbre + ">predire age</button></a></td>";
+        html += "<td><button id_arbre="+ tree.id_arbre + ">predire age</button></td>";
         html += "</tr>";
     });
     html += "</table>";
@@ -117,20 +117,6 @@ function loadTableau(trees_original) {
         compt_page=0;
         loadTableau(trees_original); // Recharger le tableau avec les nouvelles options de tri
     });
-<<<<<<< HEAD
-}
-
-// Gestion des clics sur les boutons de prediction de l'age
-$("#tableau_load").on("click", "button", function() {
-    console.log("click age")
-    var id_arbre = $(this).attr("id_arbre");
-    ajaxRequest("GET", "../php/request.php/age/"+id_arbre, function(response) {
-        console.log(response)
-        console.log(response["DecisionTree"])
-        //alert("L'age de l'arbre est de " + response.age + " ans.");
-    });
-});
-=======
 
     
 }
@@ -188,4 +174,14 @@ function LoadAll(trees){
     $('#tableau_load').show();
     $('#map-container').show();
 }
->>>>>>> c4825a8e42a5c1f098efa02aaf528aa6f071fed2
+
+// Gestion des clics sur les boutons de prediction de l'age
+$("#tableau_load").on("click", "button", function() {
+    console.log("click age")
+    var id_arbre = $(this).attr("id_arbre");
+    ajaxRequest("GET", "../php/request.php/age/"+id_arbre, function(response) {
+        console.log(response)
+        console.log(response["DecisionTree"])
+        //alert("L'age de l'arbre est de " + response.age + " ans.");
+    });
+});
