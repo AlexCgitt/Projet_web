@@ -25,6 +25,22 @@ switch ($requestRessource) {
                 break;
         }
         break;
+    case "age":
+        switch($requestMethod){
+            case "GET":
+                $result = dbRequestArbre($db, $id);
+                $tab = Array(Array("id_arbre" => $result["id_arbre"], "haut_tot" => $result["haut_tot"], "haut_tronc" => $result["haut_tronc"], "tronc_diam" => $result["tronc_diam"], "clc_nbr_diag" => $result["clc_nbr_diag"], "fk_nomtech" => $result["nomtech"], "fk_stadedev" => $result["nom_stadedev"]));
+                
+                $fp = fopen('../python/age.json', 'w');
+                fwrite($fp, json_encode($tab));
+                fclose($fp);
+
+                $result = shell_exec("python ../python/script_age.py ../python/age.json");
+                echo $result;
+                exit(0);
+
+            }
+        break;          
 }
 
 if (!empty($result)) {

@@ -83,7 +83,7 @@ function loadTableau(trees_original) {
         html += "<td>"+tree.haut_tronc+"</td>";
         html += "<td>"+tree.tronc_diam+"</td>";
         html += "<td>"+tree.nom_feuillage+"</td>";
-        html += "<td><a href='../vues/prediction_age.php'><button id_arbre="+ tree.id_arbre + ">predire age</button></a></td>";
+        html += "<td><button id_arbre="+ tree.id_arbre + ">predire age</button></td>";
         html += "</tr>";
     });
     html += "</table>";
@@ -174,3 +174,10 @@ function LoadAll(trees){
     $('#tableau_load').show();
     $('#map-container').show();
 }
+
+// Gestion des clics sur les boutons de prediction de l'age
+$("#tableau_load").on("click", "button", function() {
+    console.log("click age")
+    var id_arbre = $(this).attr("id_arbre");
+    window.location.href = "../vues/prediction_age.php?id_arbre=" + id_arbre;
+});
