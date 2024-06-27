@@ -145,6 +145,34 @@ footer .social-icons a:hover {
     color: green;
 }
 
+.button-section {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+#run-script {
+    padding: 1em;
+    background: black;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#run-script:hover {
+    background-color: green;
+    color: white;
+}
+
+.result-section {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2em;
+    margin-top: 2em;
+}
+
 /* Media Queries */
 @media (max-width: 768px) {
     nav {
@@ -188,5 +216,11 @@ footer .social-icons a:hover {
         flex: 1 1 100%;
         max-width: 100%;
         margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 699px) {
+    #map {
+        display: none; /* Masquer la carte lorsque la largeur est inférieure à 700px */
     }
 }

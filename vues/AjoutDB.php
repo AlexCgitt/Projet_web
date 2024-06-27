@@ -72,6 +72,16 @@
         $conn->close();
         ?>
         <p>Retrouvez dès à présent votre arbre sur la carte</p>
+        <a href="prediction_cluster.php"><button style="width: 20%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding: 1em;
+    background: black;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1em;
+    cursor: pointer;">Prediction du cluster de l'arbre que vous venez de rentrer</button></a>
         <div id="map" style="width: 100%; height: 100vh;"></div>
         <script>
         // Fonction pour charger les données du dernier arbre

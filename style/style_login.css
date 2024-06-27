@@ -155,17 +155,23 @@ footer .social-icons a:hover {
     }
 
     footer .colonnes {
-        flex-direction: column; /* Empiler les colonnes verticalement sur les petits écrans */
-        gap: 20px; /* Espacement entre les colonnes */
+        flex-direction: column; 
+        gap: 20px; 
     }
 
     footer .colonne {
-        max-width: 100%; /* Assurer que chaque colonne occupe la largeur complète */
+        max-width: 100%; 
     }
 
     footer .colonne {
         flex: 1 1 100%;
         max-width: 100%;
         margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 699px) {
+    #map {
+        display: none; 
     }
 }

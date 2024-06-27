@@ -112,7 +112,6 @@ main .title-section p {
     transform: scale(1.05);
 }
 
-
 button {
     padding: 1em;
     margin-left: 2%;
@@ -129,9 +128,6 @@ button:hover {
     background-color:green; 
     color: white; 
 }
-
-
-
 
 footer {
     background-color: #f9f9f9;
@@ -303,4 +299,10 @@ table tr:hover {
 
     
 
+}
+
+@media (max-width: 699px) {
+    #map {
+        display: none; /* Masquer la carte lorsque la largeur est inférieure à 700px */
+    }
 }

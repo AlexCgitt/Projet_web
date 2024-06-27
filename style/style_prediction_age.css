@@ -190,3 +190,9 @@ footer .social-icons a:hover {
         margin-bottom: 20px;
     }
 }
+
+@media (max-width: 699px) {
+    #map {
+        display: none; /* Masquer la carte lorsque la largeur est inférieure à 700px */
+    }
+}

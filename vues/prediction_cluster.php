@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../style/style_prediction_cluster.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>SAINT-QUENTREE - prediction</title>
 </head>
 <body>
@@ -33,7 +34,18 @@
             <h1>Prédiction du cluster<span class="material-symbols-outlined">forest</span></h1>
             <p>prediction du cluster du dernier arbre affiché</p>
         </div>
-          
+        <div class="button-section">
+            <button id="run-script">Lancer la Prédiction</button>
+        </div>
+        <div class="result-section" id="result-section">
+            <!-- Le résultat du script Python sera affiché ici -->
+        </div>
+        <div>
+            <?php
+            $output = shell_exec('python3 ../python/cluster_carte.py');
+            ?>
+            <iframe src="../vues/carte_plotly.html" style="width: 100%; height: 100vh; border: none;"></iframe>
+        </div>
     </main>
 
     <footer>
@@ -58,12 +70,28 @@
             </div>
         </div>
     </footer>
-    <script>var data = [{
-                type: 'scattermapbox',
-            }];var layout = {
-    mapbox: {style: 'open-street-map', center: {lat: 49.847066, lon: 3.2874}, zoom: 12},
-    margin: {r: 0, t: 0, l: 0, b: 0}
-    }; Plotly.newPlot('map', data, layout);</script>
-    
+    <script>
+        $(document).ready(function(){
+            $('#run-script').click(function(){
+                $.ajax({
+                    url: 'execute_python.php',
+                    method: 'GET',
+                    success: function(response) {
+                        $('#result-section').html('<pre>' + response + '</pre>');
+                    },
+                    error: function() {
+                        $('#result-section').html('<p>Erreur lors de l\'exécution du script.</p>');
+                    }
+                });
+            });
+        });
+
+        var data = [{
+            type: 'scattermapbox',
+        }];var layout = {
+mapbox: {style: 'open-street-map', center: {lat: 49.847066, lon: 3.2874}, zoom: 12},
+margin: {r: 0, t: 0, l: 0, b: 0}
+}; Plotly.newPlot('map', data, layout);
+    </script>
 </body>
 </html>
