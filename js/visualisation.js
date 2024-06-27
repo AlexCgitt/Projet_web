@@ -114,3 +114,14 @@ function loadTableau(trees_original) {
         loadTableau(trees_original); // Recharger le tableau avec les nouvelles options de tri
     });
 }
+
+// Gestion des clics sur les boutons de prediction de l'age
+$("#tableau_load").on("click", "button", function() {
+    console.log("click age")
+    var id_arbre = $(this).attr("id_arbre");
+    ajaxRequest("GET", "../php/request.php/age/"+id_arbre, function(response) {
+        console.log(response)
+        console.log(response["DecisionTree"])
+        //alert("L'age de l'arbre est de " + response.age + " ans.");
+    });
+});

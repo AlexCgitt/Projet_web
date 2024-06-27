@@ -65,6 +65,25 @@ function dbRequestArbres($db)
     return $result;
 }
 
+function dbRequestArbre($db, $id_arbre){
+    try {
+        $request = 'SELECT a.id_arbre, a.haut_tot, a.haut_tronc, a.tronc_diam, a.clc_nbr_diag, nt.nomtech, sd.nom_stadedev
+        FROM Arbre a
+        JOIN NomTech nt ON a.id_nomtech = nt.id_nomtech 
+        JOIN Stadedev sd ON a.id_stadedev = sd.id_stadedev
+        WHERE a.id_arbre = :id_arbre';
+        
+        $statement = $db->prepare($request);
+        $statement->bindParam(':id_arbre', $id_arbre);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $exception) {
+        error_log('Request error: ' . $exception->getMessage());
+        return false;
+    }
+    return $result;
+}
+
 function dbAddArbres($db, $longitude ,$latitude, $haut_tot, $haut_tronc, $tronc_diam, $clc_nbr_diag, $remarquable, $revetement, $nom_stadedev, $identifiant, $nomtech, $nom_port, $nom_villeca, $nom_pied, $nom_feuillage, $nom_situation, $nom_arbreetat,$nom_secteur,$nom_quartier){
 
     try {
