@@ -1,11 +1,15 @@
 $("#tableau").click(function (event) { 
     console.log("click")
     ajaxRequest("GET", "../php/request.php/arbres/" , loadTableau)
+    $('#map-container').hide();
+    $('#tableau_load').show();
+    $('#recherche').show();
+    $('#filtres').show();
 })
 
 console.log("visualisation.js")
 
-
+// à mettre dans ta fonction load tableau pour que ce ne soit pas affiché comme de la merde au
 
 var keys = ['id_arbre', 'longitude', 'latitude', 'nom_stadedev', 'nomtech', 'clc_nbr_diag', 'haut_tot', 'haut_tronc', 'tronc_diam', 'nom_feuillage'];
 
@@ -16,7 +20,7 @@ keys.forEach(function(key) {
 
 var html = '<span>Trier par: </span><select id="sortField">' + fieldOptions + '</select>';
 html += '<span>Par ordre: </span><select id="sortOrder"><option value="asc">Croissant</option><option value="desc">Décroissant</option></select>';
-html += '<button id="trier">Trier</button>';
+html += '<button id="trier" class="ok">Trier</button>';
 
 $("#filtres").html(html);
 
@@ -79,7 +83,7 @@ function loadTableau(trees_original) {
         html += "<td>"+tree.haut_tronc+"</td>";
         html += "<td>"+tree.tronc_diam+"</td>";
         html += "<td>"+tree.nom_feuillage+"</td>";
-        html += "<td><button id_arbre="+ tree.id_arbre + ">predire age</button></td>";
+        html += "<td><a href='../vues/prediction_age.php'><button id_arbre="+ tree.id_arbre + ">predire age</button></a></td>";
         html += "</tr>";
     });
     html += "</table>";
@@ -87,7 +91,7 @@ function loadTableau(trees_original) {
     $("#tableau_load").html(html);
 
     // Ajout des boutons de navigation de pagination
-    $("#tableau_load").append("<button id='avant'>Avant</button><button id='apres'>Après</button>");
+    $("#tableau_load").append("<button id='avant' class='ok'>Avant</button><button id='apres' class='ok'>Après</button>");
 
     // Gestion des clics sur les boutons de pagination
     $("#avant").click(function() {
@@ -113,6 +117,7 @@ function loadTableau(trees_original) {
         compt_page=0;
         loadTableau(trees_original); // Recharger le tableau avec les nouvelles options de tri
     });
+<<<<<<< HEAD
 }
 
 // Gestion des clics sur les boutons de prediction de l'age
@@ -125,3 +130,62 @@ $("#tableau_load").on("click", "button", function() {
         //alert("L'age de l'arbre est de " + response.age + " ans.");
     });
 });
+=======
+
+    
+}
+
+
+$("#carte").click(function (event) { 
+    console.log("click")
+    ajaxRequest("GET", "../php/request.php/arbres/" , loadCarte)
+    $('#map-container').show();
+    $('#tableau_load').hide();
+    $('#recherche').hide();
+    $('#filtres').hide();
+})
+
+
+
+function loadCarte(trees) {
+    const latitude = trees.map(tree => parseFloat(tree.latitude));
+    const longitude = trees.map(tree => parseFloat(tree.longitude));
+
+    var data = [{
+        type: 'scattermapbox',
+        lat: latitude,
+        lon: longitude,
+        mode: 'markers',
+        marker: {size: 10, color: 'green'}
+    }];
+
+    var layout = {
+        mapbox: {
+            style: 'open-street-map', 
+            center: {lat: 49.847066, lon: 3.2874}, 
+            zoom: 12
+        },
+        margin: {r: 0, t: 0, l: 0, b: 0}
+    };
+
+    Plotly.newPlot('map2', data, layout);
+
+    // Affichez la carte et masquez les autres éléments si nécessaire
+    
+}
+
+$("#tableau_carte").click(function (event) { 
+    console.log("click")
+    ajaxRequest("GET", "../php/request.php/arbres/" , LoadAll)
+})
+
+function LoadAll(trees){
+    loadTableau(trees)
+    loadCarte(trees)
+
+    $('#recherche').show();
+    $('#filtres').show();
+    $('#tableau_load').show();
+    $('#map-container').show();
+}
+>>>>>>> c4825a8e42a5c1f098efa02aaf528aa6f071fed2

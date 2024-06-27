@@ -37,12 +37,16 @@
             <h2>Choisissez la prédiction que vous souhaitez observer</h2>
             <div class="grid-container">
                 <div id="tableau" class="grid-item">
-                    <img src="../img/pred_age.jpg" alt="prediccion">
+                    <a href="prediction_age.php">
+                        <img src="../img/pred_age.jpg" alt="prediccion">
+                    </a>
                     <h3>Prédiction de l'âge</h3>
                     <p>Click</p>
                 </div>
                 <div id="carte" class="grid-item">
-                    <img src="../img/arbre_cluster.jpg" alt="Clusterr">
+                    <a href="prediction_cluster.php">
+                        <img src="../img/arbre_cluster.jpg" alt="Clusterr">
+                    </a>
                     <h3>Prediction du cluster</h3>
                     <p>Click</p>
                 </div>

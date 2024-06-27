@@ -64,12 +64,24 @@
             </div>
         </div>
     </footer>
-    <script>var data = [{
-                type: 'scattermapbox',
-            }];var layout = {
-    mapbox: {style: 'open-street-map', center: {lat: 49.847066, lon: 3.2874}, zoom: 12},
-    margin: {r: 0, t: 0, l: 0, b: 0}
-    }; Plotly.newPlot('map', data, layout);</script>
+    <script>
+    var data = [{
+        type: 'scattermapbox',
+    }];
+
+    var layout = {
+        mapbox: {
+            style: 'open-street-map',
+            center: { lat: 49.847066, lon: 3.2874 },
+            zoom: 12
+        },
+        margin: { r: 0, t: 0, l: 0, b: 0 },
+        responsive: true 
+    };
+
+    Plotly.newPlot('map', data, layout);
+</script>
+
 
 
 

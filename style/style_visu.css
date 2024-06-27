@@ -112,6 +112,23 @@ main .title-section p {
     transform: scale(1.05);
 }
 
+button {
+    padding: 1em;
+    margin-left: 2%;
+    background: black;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color:green; 
+    color: white; 
+}
+
 footer {
     background-color: #f9f9f9;
     padding: 25px 100px;
@@ -177,6 +194,21 @@ footer .social-icons a:hover {
 
     .grid-container {
         grid-template-columns: 1fr;
+    }
+
+    footer .colonnes {
+        flex-direction: column; 
+        gap: 20px; 
+    }
+
+    footer .colonne {
+        max-width: 100%; 
+    }
+
+    footer .colonne {
+        flex: 1 1 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
     }
 }
 
@@ -263,5 +295,14 @@ table tr:hover {
 
     table td:last-child {
         border-bottom: 0;
+    }
+
+    
+
+}
+
+@media (max-width: 699px) {
+    #map {
+        display: none; /* Masquer la carte lorsque la largeur est inférieure à 700px */
     }
 }

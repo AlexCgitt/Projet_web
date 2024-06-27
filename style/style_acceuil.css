@@ -99,6 +99,10 @@ main .title-section p {
     color: #555;
 }
 
+.grid-item:hover {
+    transform: scale(1.05);
+}
+
 footer {
     background-color: #f9f9f9;
     padding: 25px 100px;
@@ -166,5 +170,26 @@ footer .social-icons a:hover {
 
     .grid-container {
         grid-template-columns: 1fr;
+    }
+
+    footer .colonnes {
+        flex-direction: column; 
+        gap: 20px; 
+    }
+
+    footer .colonne {
+        max-width: 100%; 
+    }
+
+    footer .colonne {
+        flex: 1 1 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 699px) {
+    #map {
+        display: none; /* Masquer la carte lorsque la largeur est inférieure à 700px */
     }
 }
