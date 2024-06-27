@@ -37,7 +37,9 @@
             <h2>Choisissez la prédiction que vous souhaitez observer</h2>
             <div class="grid-container">
                 <div id="tableau" class="grid-item">
-                    <img src="../img/pred_age.jpg" alt="prediccion">
+                    <a href="prediction_age.php">
+                        <img src="../img/pred_age.jpg" alt="prediccion">
+                    </a>
                     <h3>Prédiction de l'âge</h3>
                     <p>Click</p>
                 </div>

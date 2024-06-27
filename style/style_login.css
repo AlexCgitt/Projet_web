@@ -153,4 +153,19 @@ footer .social-icons a:hover {
         flex-direction: column;
         align-items: flex-start;
     }
+
+    footer .colonnes {
+        flex-direction: column; /* Empiler les colonnes verticalement sur les petits écrans */
+        gap: 20px; /* Espacement entre les colonnes */
+    }
+
+    footer .colonne {
+        max-width: 100%; /* Assurer que chaque colonne occupe la largeur complète */
+    }
+
+    footer .colonne {
+        flex: 1 1 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
 }

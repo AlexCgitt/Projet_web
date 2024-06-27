@@ -169,4 +169,19 @@ footer .social-icons a:hover {
     .team-member {
         width: 80%;
     }
+
+    footer .colonnes {
+        flex-direction: column; 
+        gap: 20px; 
+    }
+
+    footer .colonne {
+        max-width: 100%; 
+    }
+
+    footer .colonne {
+        flex: 1 1 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
 }

@@ -20,7 +20,7 @@ keys.forEach(function(key) {
 
 var html = '<span>Trier par: </span><select id="sortField">' + fieldOptions + '</select>';
 html += '<span>Par ordre: </span><select id="sortOrder"><option value="asc">Croissant</option><option value="desc">Décroissant</option></select>';
-html += '<button id="trier">Trier</button>';
+html += '<button id="trier" class="ok">Trier</button>';
 
 $("#filtres").html(html);
 
@@ -83,7 +83,7 @@ function loadTableau(trees_original) {
         html += "<td>"+tree.haut_tronc+"</td>";
         html += "<td>"+tree.tronc_diam+"</td>";
         html += "<td>"+tree.nom_feuillage+"</td>";
-        html += "<td><button id_arbre="+ tree.id_arbre + ">predire age</button></td>";
+        html += "<td><a href='../vues/prediction_age.php'><button id_arbre="+ tree.id_arbre + ">predire age</button></a></td>";
         html += "</tr>";
     });
     html += "</table>";
@@ -91,7 +91,7 @@ function loadTableau(trees_original) {
     $("#tableau_load").html(html);
 
     // Ajout des boutons de navigation de pagination
-    $("#tableau_load").append("<button id='avant'>Avant</button><button id='apres'>Après</button>");
+    $("#tableau_load").append("<button id='avant' class='ok'>Avant</button><button id='apres' class='ok'>Après</button>");
 
     // Gestion des clics sur les boutons de pagination
     $("#avant").click(function() {
