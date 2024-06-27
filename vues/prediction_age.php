@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="../style/style_prediction.css">
+    <link rel="stylesheet" href="../style/style_prediction_cluster.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <title>SAINT-QUENTREE - prediction</title>
@@ -30,26 +30,10 @@
     
     <main>
         <div class="title-section">
-            <h1>Prédiction <span class="material-symbols-outlined">forest</span></h1>
-            <p>Quelle prédiction souhaitez vous observer</p>
+            <h1>Prédiction de l'âge d'un arbre<span class="material-symbols-outlined">forest</span></h1>
+            <p>prediction de l'âge de l'arbre</p>
         </div>
-        <section class="display-choice">
-            <h2>Choisissez la prédiction que vous souhaitez observer</h2>
-            <div class="grid-container">
-                <div id="tableau" class="grid-item">
-                    <img src="../img/pred_age.jpg" alt="prediccion">
-                    <h3>Prédiction de l'âge</h3>
-                    <p>Click</p>
-                </div>
-                <div id="carte" class="grid-item">
-                    <a href="prediction_cluster.php">
-                        <img src="../img/arbre_cluster.jpg" alt="Clusterr">
-                    </a>
-                    <h3>Prediction du cluster</h3>
-                    <p>Click</p>
-                </div>
-            </div>
-        </section>  
+          
     </main>
 
     <footer>

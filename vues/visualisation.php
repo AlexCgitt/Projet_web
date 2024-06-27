@@ -54,8 +54,11 @@
             </div>
         </section>
         <div id="recherche"></div>
-        <div id="filtres"></div>
+        <div id="filtres" style="display: none;"></div>
         <div id="tableau_load"></div>
+        <div id="map-container" style="display: none;">
+            <div id="map2" style="width: 100%; height: 60vh;"></div> <!-- Conteneur de la carte -->
+        </div>
     </main>
 
     <footer>
@@ -97,5 +100,7 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="../js/Ajax.js"></script>
     <script src="../js/visualisation.js"></script>
+    <!-- <script src="../js/visualisation_carte.js"></script>
+    <script src="../js/visualisation_tableau_carte.js"></script> -->
 </body>
 </html>

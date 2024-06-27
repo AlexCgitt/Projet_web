@@ -1,57 +1,127 @@
-<?php
-$servername = "localhost";
-$username = "etu1122";
-$password = "qikqpbvw";
-$dbname = "etu1122";
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="../style/style_ajout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>SAINT-QUENTREE - Ajout d'arbre</title>
+</head>
+<body>
+<nav>
+    <div class="logo">
+        <a href="./Acceuil.php">
+            <img src="../img/logo.png" alt="logo">
+        </a>
+    </div>
+    <ul>
+        <li><a href="./Ajout.php">Ajout d'arbres</a></li>
+        <li><a href="./visualisation.php">Visualisation</a></li>
+        <li><a href="./prediction.php">Prediction</a></li>
+        <li><a href="./contact.php">Contact</a></li>
+    </ul>
+    <div class="login">
+        <a href="./Login.php">log in / log out</a>
+    </div>
+</nav>
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("La connexion a échoué : " . $conn->connect_error);
-}
+<main>
+    <div class="title-section">
+        <h1>Votre arbre a-t-il bien été ajouté à notre base de données<span class="material-symbols-outlined">forest</span></h1>
+        <?php
+        $servername = "localhost";
+        $username = "etu1105";
+        $password = "jhwuqqax";
+        $dbname = "etu1105";
 
-# Récupération des valeurs du formulaire
-$longitude = $_POST['longitude'];
-$latitude = $_POST['latitude'];
-$stade_developpement = $_POST['stade_developpement'];
-$nom_technique = $_POST['nom_technique'];
-$nombre_diagnostics = $_POST['nombre_diagnostics'];
-$hauteur_tronc = $_POST['hauteur_tronc'];
-$diametre_tronc = $_POST['diametre_tronc'];
-$hauteur_totale = $_POST['hauteur_totale'];
-$feuillage = $_POST['feuillage'];
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        if ($conn->connect_error) {
+            die("La connexion a échoué : " . $conn->connect_error);
+        }
 
+        # Récupération des valeurs du formulaire
+        $longitude = $_POST['longitude'];
+        $latitude = $_POST['latitude'];
+        $id_stadedev = $_POST['stade_developpement'];
+        $id_nomtech = $_POST['nom_technique'];
+        $nombre_diagnostics = $_POST['nombre_diagnostics'];
+        $hauteur_tronc = $_POST['hauteur_tronc'];
+        $diametre_tronc = $_POST['diametre_tronc'];
+        $hauteur_totale = $_POST['hauteur_totale'];
+        $id_feuillage = $_POST['feuillage'];
 
-# Récupération des ID de la table Stadedev
-$sql1 = "SELECT id_stadedev FROM Stadedev WHERE nom_stadedev = '$stade_developpement'";
-$result1 = $conn->query($sql1);
-if ($result1->num_rows > 0) {
-    $row1 = $result1->fetch_assoc();
-    $id_stadedev = $row1['id_stadedev'];
-} else {die("Erreur lors de la récupération de l'ID du stade de développement.");}
+        # Requêtre pour ajouter un arbre
+        $sql = "INSERT INTO Arbre (longitude, latitude, id_stadedev, id_nomtech, clc_nbr_diag, haut_tronc, tronc_diam, haut_tot, id_feuillage, remarquable, revetement, identifiant, id_port, id_villeca, id_pied, id_situation, id_arbreetat, id_secteur, id_quartier)
+                VALUES ('$longitude', '$latitude', '$id_stadedev', '$id_nomtech', '$nombre_diagnostics', '$hauteur_tronc', '$diametre_tronc', '$hauteur_totale', '$id_feuillage', 'Non', 'Non', 'user1', '1', '1', '1', '1', '1', '1', '1')";
 
-# Récupération des ID de la table NomTech
-$sql2 = "SELECT id_nomtech FROM NomTech WHERE nomtech = '$nom_technique'";
-$result2 = $conn->query($sql2);
-if ($result2->num_rows > 0) {
-    $row2 = $result2->fetch_assoc();
-    $id_nomtech = $row2['id_nomtech'];
-} else {die("Erreur lors de la récupération de l'ID du stade de développement.");}
+        if ($conn->query($sql) === TRUE) {
+            echo "Les données ont été ajoutées avec succès.";
+            $last_id = $conn->insert_id; // recupère l'identifiant du dernier arbre
+        } else {
+            echo "Erreur : " . $conn->error;
+        }
 
-# Récupération des ID de la table Feuillage
-$sql3 = "SELECT id_feuillage FROM Feuillage WHERE nom_feuillage = '$feuillage'";
-$result3 = $conn->query($sql3);
-if ($result3->num_rows > 0) {   
-    $row3 = $result3->fetch_assoc();
-    $id_feuillage = $row3['id_feuillage'];
-} else {die("Erreur lors de la récupération de l'ID du stade de développement.");}
+        # Récupérer les données du dernier arbre ajouté
+        $sql_last = "SELECT * FROM Arbre WHERE id_arbre = '$last_id'";
+        $result = $conn->query($sql_last);
+        $last_tree = $result->fetch_assoc();
 
-# Requêtre pour ajouter un arbre
-$sql = "INSERT INTO Arbre (longitude, latitude, id_stadedev, id_nomtech, clc_nbr_diag, haut_tronc, tronc_diam, haut_tot, id_feuillage, remarquable, revetement, identifiant, id_port, id_villeca, id_pied, id_situation, id_arbreetat, id_secteur, id_quartier)
-        VALUES ('$longitude', '$latitude', '$id_stadedev', '$id_nomtech', '$nombre_diagnostics', '$hauteur_tronc', '$diametre_tronc', '$hauteur_totale', '$id_feuillage', 'Non', 'Non', 'user1', '1', '1', '1', '1', '1', '1', '1')";
+        $conn->close();
+        ?>
+        <p>Retrouvez dès à présent votre arbre sur la carte</p>
+        <div id="map" style="width: 100%; height: 100vh;"></div>
+        <script>
+        // Fonction pour charger les données du dernier arbre
+        function loadLastTree() {
+            const latitude = <?php echo $last_tree['latitude']; ?>;
+            const longitude = <?php echo $last_tree['longitude']; ?>;
+            plotMap(latitude, longitude);
+        }
 
-if ($conn->query($sql) === TRUE) {
-    echo "Les données ont été ajoutées avec succès.";
-} else {echo "Erreur : " . $conn->error;}
+        // Fonction pour tracer la carte avec Plotly
+        function plotMap(latitude, longitude) {
+            var data = [{
+                type: 'scattermapbox',
+                lat: [latitude],
+                lon: [longitude],
+                mode: 'markers',
+                marker: {size: 10, color: 'green'}
+            }];
+            var layout = {
+                mapbox: {style: 'open-street-map', center: {lat: latitude, lon: longitude}, zoom: 12},
+                margin: {r: 0, t: 0, l: 0, b: 0}
+            };
+            Plotly.newPlot('map', data, layout);
+        }
+        loadLastTree();
+        </script>
+    </div>
+</main>
 
-$conn->close();
-?>
+<footer>
+    <p class="centre">SAINT-QUENTREE</p>
+    <div class="colonnes">
+        <div class="colonne">
+            <p class="centre">Contact</p>
+            <div class="social-icons">
+                <a class="facebook" href="https://www.facebook.com/villedesaintquentin.OFFICIEL/?locale=fr_FR"><i class="fa-brands fa-facebook"></i></a>
+                <a class="twitter" href="https://x.com/a_saint_quentin"><i class="fa-brands fa-twitter"></i></a>
+                <a class="insta" href="https://www.instagram.com/villesaintquentin/"><i class="fa-brands fa-instagram"></i></a>
+                <a class="internet" href="https://www.saint-quentin.fr/"><i class="fa-brands fa-internet-explorer"></i></a>   
+            </div>
+        </div>
+        <div class="colonnes">
+            <div id="map" style="width: 50%; height: 30vh;"></div>
+        </div>
+        <div class="colonne">
+            <p>Adresse</p>
+            <p>1 rue des arbres</p>
+            <p>02100 Saint-Quentin</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

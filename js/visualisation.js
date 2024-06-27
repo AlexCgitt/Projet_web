@@ -1,11 +1,15 @@
 $("#tableau").click(function (event) { 
     console.log("click")
     ajaxRequest("GET", "../php/request.php/arbres/" , loadTableau)
+    $('#map-container').hide();
+    $('#tableau_load').show();
+    $('#recherche').show();
+    $('#filtres').show();
 })
 
 console.log("visualisation.js")
 
-
+// à mettre dans ta fonction load tableau pour que ce ne soit pas affiché comme de la merde au
 
 var keys = ['id_arbre', 'longitude', 'latitude', 'nom_stadedev', 'nomtech', 'clc_nbr_diag', 'haut_tot', 'haut_tronc', 'tronc_diam', 'nom_feuillage'];
 
@@ -113,4 +117,60 @@ function loadTableau(trees_original) {
         compt_page=0;
         loadTableau(trees_original); // Recharger le tableau avec les nouvelles options de tri
     });
+
+    
+}
+
+
+$("#carte").click(function (event) { 
+    console.log("click")
+    ajaxRequest("GET", "../php/request.php/arbres/" , loadCarte)
+    $('#map-container').show();
+    $('#tableau_load').hide();
+    $('#recherche').hide();
+    $('#filtres').hide();
+})
+
+
+
+function loadCarte(trees) {
+    const latitude = trees.map(tree => parseFloat(tree.latitude));
+    const longitude = trees.map(tree => parseFloat(tree.longitude));
+
+    var data = [{
+        type: 'scattermapbox',
+        lat: latitude,
+        lon: longitude,
+        mode: 'markers',
+        marker: {size: 10, color: 'green'}
+    }];
+
+    var layout = {
+        mapbox: {
+            style: 'open-street-map', 
+            center: {lat: 49.847066, lon: 3.2874}, 
+            zoom: 12
+        },
+        margin: {r: 0, t: 0, l: 0, b: 0}
+    };
+
+    Plotly.newPlot('map2', data, layout);
+
+    // Affichez la carte et masquez les autres éléments si nécessaire
+    
+}
+
+$("#tableau_carte").click(function (event) { 
+    console.log("click")
+    ajaxRequest("GET", "../php/request.php/arbres/" , LoadAll)
+})
+
+function LoadAll(trees){
+    loadTableau(trees)
+    loadCarte(trees)
+
+    $('#recherche').show();
+    $('#filtres').show();
+    $('#tableau_load').show();
+    $('#map-container').show();
 }
