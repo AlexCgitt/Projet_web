@@ -6,7 +6,6 @@ function isLoggedIn() {
 }
 
 function requireLogin() {
-    echo "le petit chat est passé par la";
     if (!isset($_SESSION['username']))
     header("Location: Login.php");
 }
