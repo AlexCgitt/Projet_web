@@ -24,22 +24,29 @@
             <li><a href="./contact.php">Contact</a></li>
         </ul>
         <div class="login">
-            <a href="./Login.php">log in / log out</a>
+            <a href="./Login.php">log in</a>/<a href="logout.php">log out</a>
         </div>
     </nav>
     
     <main>
         <h1>Connexion</h1>
         <p>Connectez-vous à votre compte afin de pouvoir ajouter des arbres</p>
-        <form class="login-form" action="">
+        <form class="login-form" action="login_back.php" method="POST">
             <label for="username">Pseudo</label>
-            <input type="text" id="username" name="username" placeholder="user12mickael">
+            <input type="text" id="username" name="username" placeholder="user12mickael" required>
             
             <label for="password">Mot de passe</label>
-            <input type="password" id="password" name="password" placeholder="password">
+            <input type="password" id="password" name="password" placeholder="password" required>
             
             <button type="submit">Valider</button>
         </form>
+        <?php
+ if(isset($_GET['erreur'])){
+ $err = $_GET['erreur'];
+ if($err==1 || $err==2)
+ echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+ }
+ ?>
     </main>
 
     <footer>
@@ -81,9 +88,5 @@
 
     Plotly.newPlot('map', data, layout);
 </script>
-
-
-
-
 </body>
 </html>

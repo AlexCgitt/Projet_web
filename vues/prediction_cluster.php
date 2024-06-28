@@ -25,7 +25,7 @@
             <li><a href="./contact.php">Contact</a></li>
         </ul>
         <div class="login">
-            <a href="./Login.php">log in / log out</a>
+            <a href="./Login.php">log in</a>/<a href="logout.php">log out</a>
         </div>
     </nav>
     
