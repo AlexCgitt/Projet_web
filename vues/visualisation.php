@@ -53,8 +53,8 @@
                 </div>
             </div>
         </section>
-        <div id="recherche"></div>
-        <div id="filtres" style="display: none;"></div>
+        <div id="recherche" style="display: none;"></div>
+        <div id="tri" style="display: none;"></div>
         <div id="tableau_load"></div>
         <div id="map-container" style="display: none;">
             <div id="map2" style="width: 100%; height: 70vh;"></div>
