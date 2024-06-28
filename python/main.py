@@ -18,7 +18,7 @@ if connection.is_connected():
     record = cursor.fetchone()
     print("Connecté à la base de données:", record)
 
-
+    # Remplissage de toutes les tables sauf Arbre
     query1 = """INSERT INTO ArbreEtat (nom_arbreetat) VALUES (%s)"""
     query2 = """INSERT INTO Feuillage (nom_feuillage) VALUES (%s)"""
     query3 = """INSERT INTO Nomtech (nomtech) VALUES (%s)"""
@@ -30,6 +30,7 @@ if connection.is_connected():
     query9 = """INSERT INTO Stadedev (nom_stadedev) VALUES (%s)"""
     query10 = """INSERT INTO Villeca (nome_villeca) VALUES (%s)"""
 
+    # Prise en compte des valeurs uniques
     etat = data['fk_arb_etat'].unique()
     feuillage = data['feuillage'].unique()  
     nomtech = data['fk_nomtech'].unique()
@@ -40,7 +41,7 @@ if connection.is_connected():
     stade = data['fk_stadedev'].unique()
     villeca = data['villeca'].unique()
 
-
+    # Execution des requêtes
     for value in etat:
         cursor.execute(query1, (value,))
     for value in feuillage:
@@ -54,14 +55,12 @@ if connection.is_connected():
     for value in quartier:
         cursor.execute(query6, (value,))
     
+    # Trouver l'id du quartier dans la table Secteur
     secteurs = data['clc_secteur'].unique()
     secteur_quartier = {}
     for secteur in secteurs:
         quartier = data[data['clc_secteur'] == secteur]['clc_quartier'].unique()
         secteur_quartier[secteur] = quartier
-
-
-    #trouver l'id du quartier
 
     for value in secteurs:
         cursor.execute(query7, (value,))
@@ -79,54 +78,3 @@ if connection.is_connected():
     connection.close()
 else:
     print("Erreur de connexion à la base de donnée.")
-
-
-
-
-
-
-
-
-'''
-delete_query = "DELETE FROM ArbreEtat"
-
-query = """INSERT INTO ArbreEtat (nom_arbreetat) VALUES (%s)"""
-for index, row in data.iterrows():
-    values = (row['fk_arb_etat'],)
-    cursor.execute(query, values)
-
-
-
-    queries = {
-        "ArbreEtat": "INSERT INTO ArbreEtat (nom_arbreetat) VALUES (%s)",
-        "Feuillage": "INSERT INTO Feuillage (nom_feuillage) VALUES (%s)",
-        "Nomtech": "INSERT INTO Nomtech (nomtech) VALUES (%s)",
-        "Pied": "INSERT INTO Pied (nom_pied) VALUES (%s)",
-        "Port": "INSERT INTO Port (nom_port) VALUES (%s)",
-        "Quartier": "INSERT INTO Quartier (nom_quartier) VALUES (%s)",
-        "Secteur": "INSERT INTO Secteur (nom_secteur) VALUES (%s)",
-        "Situation": "INSERT INTO Situation (nom_situation) VALUES (%s)",
-        "Stadedev": "INSERT INTO Stadedev (nom_stadedev) VALUES (%s)",
-        "Villeca": "INSERT INTO Villeca (nome_villeca) VALUES (%s)"
-    }
-
-    columns = {
-        "ArbreEtat": "fk_arb_etat",
-        "Feuillage": "feuillage",
-        "Nomtech": "fk_nomtech",
-        "Pied": "fk_pied",
-        "Port": "fk_port",
-        "Quartier": "clc_quartier",
-        "Secteur": "clc_secteur",
-        "Situation": "fk_situation",
-        "Stadedev": "fk_stadedev",
-        "Villeca": "villeca"
-    }
-
-    for table, query in queries.items():
-        if columns[table] in data.columns:
-            unival = data[columns[table]].unique()
-            for value in unival:
-                cursor.execute(query, (value,))
-
-'''

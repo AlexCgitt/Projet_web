@@ -5,18 +5,22 @@ import plotly.express as px
 import plotly.io as pio
 import matplotlib.pyplot as plt
 
-
+# by emir
 # Connexion à la base de données MySQL
 conn = mysql.connector.connect(
     host="localhost",
-    user="etu1105",
-    password="jhwuqqax",
-    database="etu1105"
+    user="etu1122",
+    password="qikqpbvw",
+    database="etu1122"
 )
 
-# Sélection les colonnes pertinentes pour le clustering KMeans avec une requête MySQL
-query = "SELECT haut_tot, haut_tronc, tronc_diam, latitude, longitude FROM Arbre"
-data = pd.read_sql(query, conn)
+# Préparation de la requête SQL pour le Clustering
+query = "SELECT haut_tot, haut_tronc, tronc_diam, latitude, longitude, clc_nbr_diag, identifiant FROM Arbre"
+cursor = conn.cursor(dictionary=True)
+cursor.execute(query)
+data = pd.DataFrame(cursor.fetchall())
+
+# Clustering KMeans
 col_data = data[['haut_tot', 'haut_tronc', 'tronc_diam']]
 kmeans = KMeans(n_clusters=5, random_state=42)
 data['cluster'] = kmeans.fit_predict(col_data)
@@ -42,7 +46,8 @@ data['category'] = data.apply(lambda row: categorize(row, stats), axis=1)
 # print(stats, "\n", data['category'].value_counts())
 
 # Affichage de la carte par rapport à leur cluster
-fig = px.scatter_mapbox(data, lat="latitude", lon="longitude", color="cluster", zoom=12)
+fig = px.scatter_mapbox(data, lat="latitude", lon="longitude", color="cluster", zoom=12, 
+                        hover_data={'category': True, 'haut_tot': True, 'haut_tronc': True, 'tronc_diam': True, 'clc_nbr_diag': True, 'identifiant': True})
 fig.update_layout(mapbox_style="open-street-map")
 fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 pio.write_html(fig, file='carte_plotly.html', auto_open=False)

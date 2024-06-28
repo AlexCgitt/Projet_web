@@ -6,22 +6,27 @@ import mysql.connector
 # Connexion à la base de données MySQL
 conn = mysql.connector.connect(
     host="localhost",
-    user="etu1105",
-    password="jhwuqqax",
-    database="etu1105"
+    user="etu1122",
+    password="qikqpbvw",
+    database="etu1122"
 )
 
-# Sélection les colonnes pertinentes pour le clustering KMeans avec une requête MySQL
+# Préparation de la requête SQL pour le Clustering
 query = "SELECT haut_tot, haut_tronc, tronc_diam FROM Arbre"
-data = pd.read_sql(query, conn)
+cursor = conn.cursor(dictionary=True)
+cursor.execute(query)
+data = pd.DataFrame(cursor.fetchall())
+
+# Clustering KMeans
 col_data = data[['haut_tot', 'haut_tronc', 'tronc_diam']]
 kmeans = KMeans(n_clusters=5, random_state=42)
 data['cluster'] = kmeans.fit_predict(col_data)
 
+# Préparation de la requête SQL pour séléctionner le dernier arbre de la table Arbre
 last_tree = "SELECT haut_tot, haut_tronc, tronc_diam FROM Arbre ORDER BY id_arbre DESC"
-data_last = pd.read_sql(last_tree, conn)
+cursor.execute(last_tree_query)
+data_last = pd.DataFrame(cursor.fetchall())
 print(data_last.iloc[0])
-
 
 # Fonction qui catégorise les arbres selon leur cluster
 def categorize(row, stats):
@@ -41,7 +46,7 @@ def categorize(row, stats):
 # Déterminer les catégories (petit, moyen, grand)
 stats = data.groupby('cluster')[['haut_tot', 'haut_tronc', 'tronc_diam']].mean().reset_index()
 data['category'] = data.apply(lambda row: categorize(row, stats), axis=1)
-#print(stats, "\n", data['category'].value_counts())
+# print(stats, "\n", data['category'].value_counts())
 
 # Fonction qui détermine le cluster de l'arbre ajouté
 def new_tree(tree):
@@ -50,7 +55,7 @@ def new_tree(tree):
     new_category = categorize(pd.Series({'cluster': new_cluster}), stats)
     return new_cluster, new_category
 
-# Calcul du Cluster du dernier arbre
+# Calcul du cluster du dernier arbre
 tree = data_last.iloc[0]
 cluster, category = new_tree(tree)
 print(f"Le nouvel arbre appartient au cluster {cluster} et est catégorisé comme {category}.")
