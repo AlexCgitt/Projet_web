@@ -62,7 +62,6 @@ if connection.is_connected():
 
 
     #trouver l'id du quartier
-
     for value in secteurs:
         cursor.execute(query7, (value,))
     for value in situation:
@@ -79,54 +78,3 @@ if connection.is_connected():
     connection.close()
 else:
     print("Erreur de connexion à la base de donnée.")
-
-
-
-
-
-
-
-
-'''
-delete_query = "DELETE FROM ArbreEtat"
-
-query = """INSERT INTO ArbreEtat (nom_arbreetat) VALUES (%s)"""
-for index, row in data.iterrows():
-    values = (row['fk_arb_etat'],)
-    cursor.execute(query, values)
-
-
-
-    queries = {
-        "ArbreEtat": "INSERT INTO ArbreEtat (nom_arbreetat) VALUES (%s)",
-        "Feuillage": "INSERT INTO Feuillage (nom_feuillage) VALUES (%s)",
-        "Nomtech": "INSERT INTO Nomtech (nomtech) VALUES (%s)",
-        "Pied": "INSERT INTO Pied (nom_pied) VALUES (%s)",
-        "Port": "INSERT INTO Port (nom_port) VALUES (%s)",
-        "Quartier": "INSERT INTO Quartier (nom_quartier) VALUES (%s)",
-        "Secteur": "INSERT INTO Secteur (nom_secteur) VALUES (%s)",
-        "Situation": "INSERT INTO Situation (nom_situation) VALUES (%s)",
-        "Stadedev": "INSERT INTO Stadedev (nom_stadedev) VALUES (%s)",
-        "Villeca": "INSERT INTO Villeca (nome_villeca) VALUES (%s)"
-    }
-
-    columns = {
-        "ArbreEtat": "fk_arb_etat",
-        "Feuillage": "feuillage",
-        "Nomtech": "fk_nomtech",
-        "Pied": "fk_pied",
-        "Port": "fk_port",
-        "Quartier": "clc_quartier",
-        "Secteur": "clc_secteur",
-        "Situation": "fk_situation",
-        "Stadedev": "fk_stadedev",
-        "Villeca": "villeca"
-    }
-
-    for table, query in queries.items():
-        if columns[table] in data.columns:
-            unival = data[columns[table]].unique()
-            for value in unival:
-                cursor.execute(query, (value,))
-
-'''

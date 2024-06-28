@@ -5,7 +5,7 @@ import plotly.express as px
 import plotly.io as pio
 import matplotlib.pyplot as plt
 
-
+# by emir
 # Connexion à la base de données MySQL
 conn = mysql.connector.connect(
     host="localhost",
