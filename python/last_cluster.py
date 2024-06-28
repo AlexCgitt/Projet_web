@@ -6,9 +6,9 @@ import mysql.connector
 # Connexion à la base de données MySQL
 conn = mysql.connector.connect(
     host="localhost",
-    user="etu1105",
-    password="jhwuqqax",
-    database="etu1105"
+    user="etu1122",
+    password="qikqpbvw",
+    database="etu1122"
 )
 
 # Sélection les colonnes pertinentes pour le clustering KMeans avec une requête MySQL
@@ -41,7 +41,7 @@ def categorize(row, stats):
 # Déterminer les catégories (petit, moyen, grand)
 stats = data.groupby('cluster')[['haut_tot', 'haut_tronc', 'tronc_diam']].mean().reset_index()
 data['category'] = data.apply(lambda row: categorize(row, stats), axis=1)
-#print(stats, "\n", data['category'].value_counts())
+# print(stats, "\n", data['category'].value_counts())
 
 # Fonction qui détermine le cluster de l'arbre ajouté
 def new_tree(tree):
