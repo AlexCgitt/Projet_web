@@ -9,9 +9,9 @@ import matplotlib.pyplot as plt
 # Connexion à la base de données MySQL
 conn = mysql.connector.connect(
     host="localhost",
-    user="etu1122",
-    password="qikqpbvw",
-    database="etu1122"
+    user="etu1105",
+    password="jhwuqqax",
+    database="etu1105"
 )
 
 # Préparation de la requête SQL pour le Clustering
