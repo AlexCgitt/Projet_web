@@ -18,7 +18,7 @@ if connection.is_connected():
     record = cursor.fetchone()
     print("Connecté à la base de données:", record)
 
-
+    # Remplissage de toutes les tables sauf Arbre
     query1 = """INSERT INTO ArbreEtat (nom_arbreetat) VALUES (%s)"""
     query2 = """INSERT INTO Feuillage (nom_feuillage) VALUES (%s)"""
     query3 = """INSERT INTO Nomtech (nomtech) VALUES (%s)"""
@@ -30,6 +30,7 @@ if connection.is_connected():
     query9 = """INSERT INTO Stadedev (nom_stadedev) VALUES (%s)"""
     query10 = """INSERT INTO Villeca (nome_villeca) VALUES (%s)"""
 
+    # Prise en compte des valeurs uniques
     etat = data['fk_arb_etat'].unique()
     feuillage = data['feuillage'].unique()  
     nomtech = data['fk_nomtech'].unique()
@@ -40,7 +41,7 @@ if connection.is_connected():
     stade = data['fk_stadedev'].unique()
     villeca = data['villeca'].unique()
 
-
+    # Execution des requêtes
     for value in etat:
         cursor.execute(query1, (value,))
     for value in feuillage:
@@ -54,14 +55,13 @@ if connection.is_connected():
     for value in quartier:
         cursor.execute(query6, (value,))
     
+    # Trouver l'id du quartier dans la table Secteur
     secteurs = data['clc_secteur'].unique()
     secteur_quartier = {}
     for secteur in secteurs:
         quartier = data[data['clc_secteur'] == secteur]['clc_quartier'].unique()
         secteur_quartier[secteur] = quartier
 
-
-    #trouver l'id du quartier
     for value in secteurs:
         cursor.execute(query7, (value,))
     for value in situation:

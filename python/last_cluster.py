@@ -11,17 +11,22 @@ conn = mysql.connector.connect(
     database="etu1122"
 )
 
-# Sélection les colonnes pertinentes pour le clustering KMeans avec une requête MySQL
+# Préparation de la requête SQL pour le Clustering
 query = "SELECT haut_tot, haut_tronc, tronc_diam FROM Arbre"
-data = pd.read_sql(query, conn)
+cursor = conn.cursor(dictionary=True)
+cursor.execute(query)
+data = pd.DataFrame(cursor.fetchall())
+
+# Clustering KMeans
 col_data = data[['haut_tot', 'haut_tronc', 'tronc_diam']]
 kmeans = KMeans(n_clusters=5, random_state=42)
 data['cluster'] = kmeans.fit_predict(col_data)
 
+# Préparation de la requête SQL pour séléctionner le dernier arbre de la table Arbre
 last_tree = "SELECT haut_tot, haut_tronc, tronc_diam FROM Arbre ORDER BY id_arbre DESC"
-data_last = pd.read_sql(last_tree, conn)
+cursor.execute(last_tree_query)
+data_last = pd.DataFrame(cursor.fetchall())
 print(data_last.iloc[0])
-
 
 # Fonction qui catégorise les arbres selon leur cluster
 def categorize(row, stats):

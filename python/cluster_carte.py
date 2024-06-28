@@ -14,9 +14,13 @@ conn = mysql.connector.connect(
     database="etu1122"
 )
 
-# Sélection les colonnes pertinentes pour le clustering KMeans avec une requête MySQL
+# Préparation de la requête SQL pour le Clustering
 query = "SELECT haut_tot, haut_tronc, tronc_diam, latitude, longitude, clc_nbr_diag, identifiant FROM Arbre"
-data = pd.read_sql(query, conn)
+cursor = conn.cursor(dictionary=True)
+cursor.execute(query)
+data = pd.DataFrame(cursor.fetchall())
+
+# Clustering KMeans
 col_data = data[['haut_tot', 'haut_tronc', 'tronc_diam']]
 kmeans = KMeans(n_clusters=5, random_state=42)
 data['cluster'] = kmeans.fit_predict(col_data)
