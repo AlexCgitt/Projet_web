@@ -33,7 +33,7 @@
         <div class="title-section">
             <div>
                 <h1>SAINT-QUENTREE</h1>
-                <p>Description du site</p>
+                <p>Le but du projet a été de concevoir et de développer une application de gestion du patrimoine arboré pour la ville de Saint-Quentin (Aisne). Tout d'abord, une partie analyse avec la réalisation d'une maquette figma avec la charte graphique, la réalisation d'un MCD, et une partie conceptuel avec le front-end. Enfin une partie back-end, avec des scripts python, que ce soit les imports des données initiales, la visualisation d'une carte détaillé avec les clusters, et la visualisation des arbres dans un tableau avec la prédiction de l'âge.</p>
             </div>
             <img src="../img/saint_quentree.png">
         </div>

@@ -53,7 +53,9 @@
             <!-- Demander à Emir son linkedin-->
              <!-- Image à chager -->
             <div class="team-member">
-                <img src="../img/visu.jpg" alt="Emir">
+                <a href="https://www.linkedin.com/in/emir-yavuz-340916260?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">
+                    <img src="../img/visu.jpg" alt="Emir">
+                </a>
                 <h3>Emir</h3>
                 <p>Click</p>
             </div>
