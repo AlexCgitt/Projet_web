@@ -50,7 +50,7 @@ def new_tree(tree):
     new_category = categorize(pd.Series({'cluster': new_cluster}), stats)
     return new_cluster, new_category
 
-# Calcul du Cluster du dernier arbre
+# Calcul du cluster du dernier arbre
 tree = data_last.iloc[0]
 cluster, category = new_tree(tree)
 print(f"Le nouvel arbre appartient au cluster {cluster} et est catégorisé comme {category}.")
